@@ -14,7 +14,7 @@ ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest
 		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:5:5-67
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:5:5-66
 	android:name
 		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_WIFI_STATE
@@ -49,11 +49,11 @@ ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:20:13-23:29
 action#android.intent.action.MAIN
-ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:21:17-69
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:21:17-68
 	android:name
 		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:21:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:22:17-77
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:22:17-76
 	android:name
 		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:22:27-74
 activity#thebigtouffe.anidex.Fiche

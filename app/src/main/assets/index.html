@@ -1,66 +1,100 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<title>Anidex</title>
 
-    <style>
-        html, body {
-        -webkit-user-select: none;
-        margin: 0;
-        padding: 0;
-        }
-
-        #demo {
-
-        }
-    </style>
-
-
-    <script type="text/javascript">
-
-function fonction1() {
-    document.getElementById("demo").innerHTML = "oui oui oui oui oui oui oui oui oui oui oui oui oui oui oui ";
-    scroll(0,0);
-}
-
-function AfficherFiche(id) {
-    num = id.toString();
-    Android.AfficherFiche(num);
-}
-
-function refresh() {
-    document.getElementById("demo").innerHTML = favori.toString();
-}
-
-function charger() {
-
-    i=0;
-    str="";
-
-    while (i<100) {
-        str=str+i.toString()+'<br>';
-        i+=1;
+<style>
+    html, body {
+    	-webkit-user-select: none;
+    	margin: 0;
+    	padding: 0;
     }
+    
+    * {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);	
+	}
+    
+	.search-wrapper {
+		width:90%;
+		margin: 5px;
+		text-align:center;
+		position: relative;
 
-    document.getElementById("fiches").innerHTML = str;
+	}
+	.search-box {
+		position: relative;
+		padding: 8px;
+		padding-left: 12px;
+		width: 100%;
+		font-size: 120%;
+		border: 1px solid #ccc;
+		outline: 0;
+		border-radius: 15px;
+	}
+	.search-box:focus {
+		box-shadow: 0 0px 7px 1px #b0e0ee;
+	}
+	
+	.close-icon {
+		background-color: transparent;
+		outline: 0;
+		display: block;
+		width: 28px;
+		height: 28px;
+		position: absolute;
+		z-index:1;
+		right: -15px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		text-align: center;
+		cursor: pointer;
+		outline: 0;
+	}
+	
 
+	
+
+</style>
+
+<script type="text/javascript" src="data.json"></script>
+<script type="text/javascript">
+
+var data = JSON.parse(data);
+
+function displayData() {
+    var i = 0;
+    var str = "";
+    while (i < data.length) {
+   		str = str + data[i].name + "<br>";
+   		i++;
+	}
+	document.getElementById("listeAnimaux").innerHTML = str;
+
+}
+
+function afficherFiche(id) {
+    Android.AfficherFiche(id.toString());
 }
 
 </script>
-
 </head>
-<body onload="charger();">
+
+<body onload="displayData();">
 
 
-<input type="button" value="Lancer Fiche" onClick="AfficherFiche(3333);">
-<input type="button" value="Afficher favori" onClick="refresh();">
-<br>
-<br>
+<div class="search-wrapper">
+	<form>
+	<input type="text" name="focus" required class="search-box" placeholder="Rechercher un animal" />
+	<a href="javascript:afficherFiche(33)"><img class="close-icon" src="close-button.png"/></a>
+	</form>
+</div>
 
-<div id="demo">Erreur de chargement Erreur de chargement  Erreur de chargement</div>
-<div id="fiches">Erreur de chargement</div>
+<input type="button" value="Afficher Fiche" onClick="afficherFiche(3333);">
+
+<div id="listeAnimaux">Erreur de chargement</div>
 
 </body>
 </html>

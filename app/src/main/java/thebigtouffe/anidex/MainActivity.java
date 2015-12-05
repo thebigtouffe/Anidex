@@ -216,7 +216,7 @@ public class MainActivity extends Activity {
 
             Log.w("Favori", favori_js);
             WebViewMain.loadUrl(favori_js);
-            WebViewMain.loadUrl("javascript:refresh()");
+            //WebViewMain.loadUrl("javascript:refresh()");
         }
         catch (IOException e) {
             // Erreur de lecture des favori
