@@ -1,0 +1,87 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:2:1-41:12
+	xmlns:android
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:2:11-69
+	package
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:3:5-34
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:6:5-75
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:7:5-78
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:7:22-76
+application
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:9:5-39:19
+MERGED from [com.android.support:appcompat-v7:22.1.1] /Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.1.1] /Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.1.1] /Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:12:9-41
+	android:allowBackup
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:10:9-35
+	android:icon
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:11:9-43
+	android:theme
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:13:9-40
+activity#thebigtouffe.anidex.MainActivity
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:15:9-25:20
+	android:screenOrientation
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:17:13-49
+	android:label
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:18:13-45
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:16:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:20:13-23:29
+action#android.intent.action.MAIN
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:22:27-74
+activity#thebigtouffe.anidex.Fiche
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:27:9-31:20
+	android:screenOrientation
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:29:13-49
+	android:label
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:30:13-57
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:28:13-34
+activity#thebigtouffe.anidex.Param
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:32:9-37:20
+	android:screenOrientation
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:35:13-49
+	android:label
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:34:13-45
+	android:configChanges
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:36:13-74
+	android:name
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:33:13-34
+uses-sdk
+INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:22.1.1] /Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.1.1] /Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.1.1] /Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/AndroidManifest.xml:20:5-43
+	android:targetSdkVersion
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml

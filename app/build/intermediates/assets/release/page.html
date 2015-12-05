@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title></title>
+
+    <script>
+
+var id = 0;
+
+function path () {
+if (internet==0) {
+document.getElementById("demo").innerHTML = '<img alt="myImagenotshowing" src="' + path_sd + 'photos/image1.jpg">';
+}
+
+if (internet==1) {
+document.getElementById("demo").innerHTML = '<img alt="myImagenotshowing" src="http://ms91310.fr/stick/thumbs/img-2.jpg">';
+}
+
+}
+
+function extraire(variable) {
+
+	url = window.location.href;
+	index=url.indexOf(variable+"=");
+	q = url.indexOf("?",index);
+	id = url.slice(index+1+variable.length,q);
+	document.getElementById("demo").innerHTML = id;
+	path();
+
+}
+
+function favori() {
+    Android.ajouter_favori(id);
+}
+
+
+</script>
+
+</head>
+<body onload="extraire('id');">
+
+<div id="demo">Erreur de chargement</div>
+
+<img alt="myImagenotshowing" src="file://mnt/sdcard/Download/Stonehenge.jpg">
+
+<input type="button" value="Ajouter aux favori" onClick="favori();">
+<input type="button" value="Afficher path" onClick="path();">
+<br>
+
+
+
+</body>
+</html>

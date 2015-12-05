@@ -1,0 +1,184 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="thebigtouffe.Anidex.MainActivity">
+    
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="thebigtouffe.Anidex.MainActivity">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <WebView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/webview_main"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+            
+        </RelativeLayout>
+        
+            <RelativeLayout
+            android:id="@+id/navigation_drawer"
+            android:layout_width="@dimen/navigation_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/bouton1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector"
+                            android:drawableLeft="@drawable/ic_favorite_white_24dp"
+                            android:text="  Favori"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton2"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton1"
+                            android:background="@drawable/selector"
+                            android:text="  Mammifères"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton3"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton2"
+                            android:background="@drawable/selector"
+                            android:text="  Oiseaux"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton4"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton3"
+                            android:background="@drawable/selector"
+                            android:text="  Reptiles"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton5"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton4"
+                            android:background="@drawable/selector"
+                            android:text="  Amphibiens"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton6"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton5"
+                            android:background="@drawable/selector"
+                            android:text="  Poissons"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton7"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton6"
+                            android:background="@drawable/selector"
+                            android:text="  Arthropodes"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton8"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton7"
+                            android:background="@drawable/selector"
+                            android:text="  Alphabétique"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton9"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton8"
+                            android:background="@drawable/selector"
+                            android:text="  Poids adulte"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton10"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton9"
+                            android:background="@drawable/selector"
+                            android:text="  Taille adulte"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+                        <Button
+                            android:id="@+id/bouton11"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton10"
+                            android:background="@drawable/selector"
+                            android:text="  Espérance de vie"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:id="@+id/bouton12"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bouton11"
+                            android:background="@drawable/selector"
+                            android:text="  Biome"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+
+                    </RelativeLayout>
+
+                </ScrollView>
+
+            </RelativeLayout>
+        
+    </android.support.v4.widget.DrawerLayout>
+    
+</FrameLayout>

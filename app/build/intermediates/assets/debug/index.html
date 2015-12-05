@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title></title>
+
+    <style>
+        html, body {
+        -webkit-user-select: none;
+        margin: 0;
+        padding: 0;
+        }
+
+        #demo {
+
+        }
+    </style>
+
+
+    <script type="text/javascript">
+
+function fonction1() {
+    document.getElementById("demo").innerHTML = "oui oui oui oui oui oui oui oui oui oui oui oui oui oui oui ";
+    scroll(0,0);
+}
+
+function AfficherFiche(id) {
+    num = id.toString();
+    Android.AfficherFiche(num);
+}
+
+function refresh() {
+    document.getElementById("demo").innerHTML = favori.toString();
+}
+
+function charger() {
+
+    i=0;
+    str="";
+
+    while (i<100) {
+        str=str+i.toString()+'<br>';
+        i+=1;
+    }
+
+    document.getElementById("fiches").innerHTML = str;
+
+}
+
+</script>
+
+</head>
+<body onload="charger();">
+
+
+<input type="button" value="Lancer Fiche" onClick="AfficherFiche(3333);">
+<input type="button" value="Afficher favori" onClick="refresh();">
+<br>
+<br>
+
+<div id="demo">Erreur de chargement Erreur de chargement  Erreur de chargement</div>
+<div id="fiches">Erreur de chargement</div>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+nom latin/nom vernaculaire
+catégorie scientifique/catégorie vulgarisée
