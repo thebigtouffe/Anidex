@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -48,19 +49,21 @@ public class MainActivity extends Activity {
         TextViewTitre.setTextColor(getResources().getColor(R.color.apptheme_accent));
         TextViewTitre.setTypeface(police_titre);
 
-        //on initialise la WebViewMain avec le pont Java <> JS
+        // initialise la WebViewMain avec le pont Java <> JS
         WebViewMain = (WebView) findViewById(R.id.webview_main);
+        WebViewMain.setWebChromeClient(new WebChromeClient());
         WebViewMain.getSettings().setJavaScriptEnabled(true);
         WebViewMain.addJavascriptInterface(new JSInterfaceMain(this), "Android");
-        WebViewMain.loadUrl("file:///android_asset/index.html");
-        WebViewMain.setWebViewClient(new WebViewClient());
         WebViewMain.setInitialScale(1);
-        
-        //on crée un dossier pour télécharger les photos (si besoin)
+        WebViewMain.setWebViewClient(new WebViewClient());
+        WebViewMain.loadUrl("file:///android_asset/index.html");
+
+
+        // crée un dossier pour télécharger les photos (si besoin)
         File dossier = new File(getExternalFilesDir(null),"/photos");
         dossier.mkdirs();
 
-        //on crée le fichier des favori si inexistant
+        // crée le fichier des favori si inexistant
         File favori = new File(getExternalFilesDir(null), "favori.txt");
         if(!favori.exists()) {
             try {
@@ -76,7 +79,7 @@ public class MainActivity extends Activity {
             }
         }
 
-        //on crée le fichier des paramètres si inexistant
+        // crée le fichier des paramètres si inexistant
         File settings = new File(getExternalFilesDir(null), "settings.txt");
         if(!settings.exists()) {
             try {
@@ -92,63 +95,8 @@ public class MainActivity extends Activity {
             }
         }
 
-        //on lit le fichier des favori puis on transfère les données vers la page HTML
-        try {
-            FileReader fileReader = new FileReader(favori);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            List<String> lines = new ArrayList<String>();
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-            bufferedReader.close();
-
-            String[] favori_liste;
-            favori_liste = lines.toArray(new String[lines.size()]);
-            String favori_js = "javascript:favori=[";
-
-            int i = 0;
-            while (i<favori_liste.length-1) {
-                favori_js=favori_js+favori_liste[i]+",";
-                i=i+1;
-            }
-            favori_js= favori_js + favori_liste[i];
-            favori_js =favori_js + "];";
-
-            Log.w("Favori", favori_js);
-            WebViewMain.loadUrl(favori_js);
-        }
-        catch (IOException e) {
-            // Impossible de lire le fichier
-            Log.w("ExternalStorage", "Error reading " + favori, e);
-        }
 
 
-        // lit le fichier des paramètres puis on transfère les données vers la page HTML
-        try {
-            FileReader fileReader = new FileReader(settings);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            List<String> lines = new ArrayList<String>();
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-            bufferedReader.close();
-
-            String[] settings_liste;
-            settings_liste = lines.toArray(new String[lines.size()]);
-
-            String settings_js = "javascript:settings=["+settings_liste[0]+","+settings_liste[1]+"];";
-            WebViewMain.loadUrl(settings_js);
-            Log.w("Settings", settings_js);
-
-
-        }
-        catch (IOException e) {
-            // Unable to create file, likely because external storage is
-            // not currently mounted.
-            Log.w("ExternalStorage", "Error reading " + settings, e);
-        }
 
         // crée l'action bar et le panneau de navigation
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -181,6 +129,7 @@ public class MainActivity extends Activity {
             }
         });
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
     }
 
 
@@ -188,64 +137,9 @@ public class MainActivity extends Activity {
     public void onResume() {
         super.onResume();  // Always call the superclass method first
 
-        // on lit les informations
-        File favori = new File(getExternalFilesDir(null), "favori.txt");
-        File settings = new File(getExternalFilesDir(null), "settings.txt");
+        // on raffraîchit la WebView
+        WebViewMain.loadUrl("javascript:refresh()");
 
-        // on demande à l'interface JS de mettre à jour les favori
-        try {
-            FileReader fileReader = new FileReader(favori);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            List<String> lines = new ArrayList<String>();
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-            bufferedReader.close();
-            String[] favori_liste;
-            favori_liste = lines.toArray(new String[lines.size()]);
-            String favori_js = "javascript:favori=[";
-            int i = 0;
-            while (i<favori_liste.length - 1) {
-                favori_js = favori_js + favori_liste[i] + ",";
-                i=i+1;
-            }
-
-            favori_js=favori_js+favori_liste[i];
-            favori_js =favori_js + "];";
-
-            Log.w("Favori", favori_js);
-            WebViewMain.loadUrl(favori_js);
-            //WebViewMain.loadUrl("javascript:refresh()");
-        }
-        catch (IOException e) {
-            // Erreur de lecture des favori
-            Log.w("ExternalStorage", "Error reading " + favori, e);
-        }
-
-        // on demande à l'interface JS de mettre à jour les paramètres
-        try {
-            FileReader fileReader = new FileReader(settings);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            List<String> lines = new ArrayList<String>();
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-            bufferedReader.close();
-            String[] settings_liste;
-            settings_liste = lines.toArray(new String[lines.size()]);
-
-            String settings_js = "javascript:settings=["+settings_liste[0]+","+settings_liste[1]+"];";
-            WebViewMain.loadUrl(settings_js);
-            Log.w("Settings", settings_js);
-
-
-        }
-        catch (IOException e) {
-            // Erreur de lecture des paramètres
-            Log.w("ExternalStorage", "Error reading " + favori, e);
-        }
     }
 
 
@@ -337,6 +231,75 @@ public class MainActivity extends Activity {
             i.putExtra("variable_name",id);
             mContext.startActivity(i);
         }
+
+
+        public void getFavori() {
+            // lit le fichier des favori puis transfère les données vers la page HTML
+            File favori = new File(getExternalFilesDir(null), "favori.txt");
+
+            try {
+                FileReader fileReader = new FileReader(favori);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+                bufferedReader.close();
+
+                String[] favori_liste;
+                favori_liste = lines.toArray(new String[lines.size()]);
+                String favori_js = "javascript:favori=(['a',";
+
+                int i = 0;
+                while (i<favori_liste.length-1) {
+                    favori_js=favori_js+favori_liste[i]+",";
+                    i=i+1;
+                }
+                favori_js= favori_js + favori_liste[i];
+                favori_js =favori_js + "]);";
+
+                WebViewMain.loadUrl(favori_js);
+                WebViewMain.loadUrl("javascript:updateFavori()");
+                Log.w("Favori", favori_js);
+            }
+            catch (IOException e) {
+                // Impossible de lire le fichier
+                Log.w("ExternalStorage", "Error reading " + favori, e);
+            }
+        }
+
+        public void getParametres() {
+            // lit le fichier des paramètres puis transfère les données vers la page HTML
+            File settings = new File(getExternalFilesDir(null), "settings.txt");
+
+            try {
+                FileReader fileReader = new FileReader(settings);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+                bufferedReader.close();
+
+                String[] settings_liste;
+                settings_liste = lines.toArray(new String[lines.size()]);
+
+                String settings_js = "javascript:settings=([" + settings_liste[0] + "," + settings_liste[1] + "]);" ;
+                Log.w("Settings", settings_js);
+
+                WebViewMain.loadUrl(settings_js);
+                WebViewMain.loadUrl("javascript:updateParametres()");
+
+
+            }
+            catch (IOException e) {
+                // Unable to create file, likely because external storage is
+                // not currently mounted.
+                Log.w("ExternalStorage", "Error reading " + settings, e);
+            }
+        }
     }
 
     // Exécute le script JS de tri n°1 à partir de l'interface Android
@@ -346,6 +309,5 @@ public class MainActivity extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.closeDrawers();
     }
-
 
 }

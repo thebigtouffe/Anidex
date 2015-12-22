@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-<head lang="en">
+<head lang="fr">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 <title>Anidex</title>
@@ -53,42 +53,19 @@
 		cursor: pointer;
 		outline: 0;
 	}
-	
-
-	
 
 </style>
 
 <script type="text/javascript" src="data.json"></script>
-<script type="text/javascript">
-
-var data = JSON.parse(data);
-
-function displayData() {
-    var i = 0;
-    var str = "";
-    while (i < data.length) {
-   		str = str + data[i].name + "<br>";
-   		i++;
-	}
-	document.getElementById("listeAnimaux").innerHTML = str;
-
-}
-
-function afficherFiche(id) {
-    Android.AfficherFiche(id.toString());
-}
-
-</script>
+<script type="text/javascript" src="index.js"></script>
 </head>
 
-<body onload="displayData();">
-
+<body onload="init()">
 
 <div class="search-wrapper">
-	<form>
-	<input type="text" name="focus" required class="search-box" placeholder="Rechercher un animal" />
-	<a href="javascript:afficherFiche(33)"><img class="close-icon" src="close-button.png"/></a>
+	<form id="Recherche">
+	<input type="text" name="champRecherche" id="champRecherche" required class="search-box" placeholder="Rechercher un animal" />
+	<a href="javascript:effacerRecherche()"><img class="close-icon" src="close-button.png"/></a>
 	</form>
 </div>
 
