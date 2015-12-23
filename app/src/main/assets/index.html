@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head lang="fr">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-<title>Anidex</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+	<title>Anidex</title>
 
-<style>
-    html, body {
-    	-webkit-user-select: none;
-    	margin: 0;
-    	padding: 0;
-    }
-    
-    * {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);	
-	}
-    
-	.search-wrapper {
-		width:90%;
-		margin: 5px;
-		text-align:center;
-		position: relative;
+	<style>
+		html, body {
+			-webkit-user-select: none;
+			margin: 0;
+			padding: 0;
+		}
 
-	}
-	.search-box {
-		position: relative;
-		padding: 8px;
-		padding-left: 12px;
-		width: 100%;
-		font-size: 120%;
-		border: 1px solid #ccc;
-		outline: 0;
-		border-radius: 15px;
-	}
-	.search-box:focus {
-		box-shadow: 0 0px 7px 1px #b0e0ee;
-	}
-	
-	.close-icon {
-		background-color: transparent;
-		outline: 0;
-		display: block;
-		width: 28px;
-		height: 28px;
-		position: absolute;
-		z-index:1;
-		right: -15px;
-		top: 0;
-		bottom: 0;
-		margin: auto;
-		text-align: center;
-		cursor: pointer;
-		outline: 0;
-	}
+		* {
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
 
-</style>
+		.search-wrapper {
+			width:90%;
+			margin: 5px;
+			text-align:center;
+			position: relative;
 
-<script type="text/javascript" src="data.json"></script>
-<script type="text/javascript" src="index.js"></script>
+		}
+		.search-box {
+			position: relative;
+			padding: 8px;
+			padding-left: 12px;
+			width: 100%;
+			font-size: 120%;
+			border: 1px solid #ccc;
+			outline: 0;
+			border-radius: 15px;
+		}
+		.search-box:focus {
+			box-shadow: 0 0px 7px 1px #b0e0ee;
+		}
+
+		.close-icon {
+			background-color: transparent;
+			outline: 0;
+			display: block;
+			width: 28px;
+			height: 28px;
+			position: absolute;
+			z-index:100;
+			right: -15px;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			text-align: center;
+			cursor: pointer;
+			outline: 0;
+		}
+		
+		#search {
+			width:100%;
+			position: fixed;
+			top: 0;
+			z-index:100;
+			text-align:center;
+		}
+		
+		#contenu {
+			margin-top:55px;
+			padding-left:6px;
+		}
+
+	</style>
+
+	<script type="text/javascript" src="data.json"></script>
+	<script type="text/javascript" src="index.js"></script>
 </head>
 
 <body onload="init()">
 
-<div class="search-wrapper">
-	<form id="Recherche">
-	<input type="text" name="champRecherche" id="champRecherche" required class="search-box" placeholder="Rechercher un animal" />
-	<a href="javascript:effacerRecherche()"><img class="close-icon" src="close-button.png"/></a>
-	</form>
-</div>
-
-<input type="button" value="Afficher Fiche" onClick="afficherFiche(3333);">
-
-<div id="listeAnimaux">Erreur de chargement</div>
-
+	<div id="search">
+		<div class="search-wrapper">
+			<form id="Recherche">
+			<input type="text" name="champRecherche" id="champRecherche" required class="search-box" placeholder="Rechercher un animal" />
+			<a href="javascript:effacerRecherche()"><img class="close-icon" src="close-button.png"/></a>
+			</form>
+		</div>
+	</div>
+	
+	<div id="contenu">
+		<input type="button" value="Afficher Fiche" onClick="afficherFiche(3);">
+		<div id="listeAnimaux">Erreur de chargement</div>
+	</div>
 </body>
 </html>

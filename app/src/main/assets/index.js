@@ -21,33 +21,32 @@ String.prototype.sansAccent = function() {
     return str;
 }
 
-function init() {
-	rafraichir();
-	setInterval(rechercher, 100);
+function updateFavori() {
+	// les favori récupéré d'Android sont un string qu'on convertit en liste
+	favori = Android.getFavori().split(", ");
+
+	var i = 1;
+	while (i<favori.length) {
+		document.getElementById('line' + favori[i]).src = "favorite.png";
+		i++;
+	}
+}
+
+function updateParametres() {
+	param = Android.getParametres();
 }
 
 function rafraichir() {
-
     var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + data[i].name + "<br>";
+   		str = str + '<div id="' + i.toString() + '">' + data[i].name + '<img id="line' + i.toString() + '" src = "not_favorite.png"/>' + "</div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
 
-	Android.getFavori();
-	Android.getParametres();
-
-}
-
-function updateFavori() {
-    //alert(favori[0]);
-
-}
-
-function updateParametres() {
-    //alert(settings[0]);
+	updateFavori();
+	updateParametres();
 
 }
 
@@ -58,17 +57,19 @@ function afficherFiche(id) {
 function effacerRecherche() {
 	document.getElementById("champRecherche").value="";
 	document.getElementById("champRecherche").focus();
-	rafraichir();
+
+	var i = 0;
+	while (i < data.length) {
+		document.getElementById(i.toString()).style.display = "block";
+		i++;
+	}
 }
-
-
 
 function rechercher() {
 	var query = document.getElementById("champRecherche").value.toLowerCase().sansAccent();
-
-	// on génère la liste des occurences des mots de la requête dans le nom de l'animal
 	var occurence = [];
-	i=0;
+
+	var i = 0;
 	while (i < data.length) {
 		occurence.push(0);
 		i++;
@@ -80,16 +81,14 @@ function rechercher() {
 	}
 
 	if (query.length > 2) {
-		document.getElementById("listeAnimaux").innerHTML = "";
 
 		// on regarde les mots de la requête
 		motQuery = query.split(" ");
 
 		var i = 0;
-		var str = "";
 		while (i < data.length) {
-			j=0;
-			while(j<motQuery.length) {
+			var j = 0;
+			while (j < motQuery.length) {
 				if (data[i].name.toLowerCase().sansAccent().indexOf(motQuery[j]) > -1) {
 					occurence[i]++;
 				}
@@ -100,13 +99,39 @@ function rechercher() {
 			}
 
 			if (occurence[i] > 0) {
-				str = str + data[i].name + "<br>";
+   				document.getElementById(i.toString()).style.display = "block";
+			}
+			else {
+				document.getElementById(i.toString()).style.display = "none";
 			}
 
 			i++;
 		}
-		document.getElementById("listeAnimaux").innerHTML = str;
+
 		oldQueryLength = query.length;
+	}
+
+}
+
+function init() {
+	rafraichir();
+	setInterval(rechercher, 100);
+}
+
+function showFavori() {
+	document.getElementById("champRecherche").blur();
+	document.getElementById("champRecherche").value="";
+
+	var i = 0;
+	while (i < data.length) {
+		numero = i.toString();
+		if (favori.indexOf(numero) == -1) {
+			document.getElementById(numero).style.display = "none";
+		}
+		else {
+			document.getElementById(numero).style.display = "block";
+		}
+		i++;
 	}
 
 }
