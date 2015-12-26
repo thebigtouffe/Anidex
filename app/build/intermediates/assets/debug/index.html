@@ -6,6 +6,11 @@
 	<title>Anidex</title>
 
 	<style>
+		@font-face {
+			font-family: GaramondItalic;
+			src: url("fonts/GaramondItalic.otf") format("opentype");
+		}
+		
 		html, body {
 			-webkit-user-select: none;
 			margin: 0;
@@ -23,7 +28,9 @@
 		}
 		.search-box {
 			outline: 0;
-			padding: 7px;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			padding-left:10px;
 			width:100%;
 			font-size: 120%;
 			border: 1px solid #ccc;
@@ -39,7 +46,7 @@
             display: block;
 			position: absolute;
 			z-index:100;
-			right: 5px;
+			right: 7px;
 			top: 0;
 			bottom: 0;
 			margin: auto;
@@ -58,7 +65,8 @@
 		}
 		
 		#contenu {
-			margin-top:55px;
+            font-family: 'GaramondItalic';
+            margin-top:55px;
 			padding-left:6px;
 		}
 
@@ -66,6 +74,11 @@
             transition: opacity .25s ease-in-out;
             -moz-transition: opacity .25s ease-in-out;
             -webkit-transition: opacity .25s ease-in-out;
+        }
+
+        .favorite {
+            width:28px;
+            height:28px;
         }
 
 	</style>

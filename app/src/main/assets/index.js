@@ -1,4 +1,6 @@
-var oldQueryLength = 0;
+var oldQueryLength;
+var previousPosition = {"az" : 0, "favori" : 0};
+var vue;
 
 String.prototype.sansAccent = function() {
     var accent = [
@@ -38,26 +40,47 @@ function updateFavori() {
 		document.getElementById('line' + favori[i]).src = "favorite.png";
 		i++;
 	}
+
+    // Si on est dans la vue favori on actualise la liste des favori affichés
+	if (vue == "favori") {
+        var i = 0;
+        while (i < data.length) {
+            numero = i.toString();
+            if (favori.indexOf(numero) == -1) {
+                document.getElementById(numero).style.display = "none";
+            }
+            else {
+                document.getElementById(numero).style.display = "block";
+            }
+            i++;
+        }
+	}
 }
 
 function updateParametres() {
 	param = Android.getParametres();
 }
 
-function rafraichirAZ() {
-
+function showAZ() {
+    // trie les données dans l'ordre alphabétique
     data.sort(triAZ);
+
+    if (vue == "favori") previousPosition.favori = window.pageYOffset;
+
+    vue = "az";
 
     var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div id="' + i.toString() + '">' + data[i].name + '<img id="line' + i.toString() + '" src = "not_favorite.png"/>' + "</div>";
+   		str = str + '<div id="' + i.toString() + '">' + data[i].name + '<img class="favorite" id="line' + i.toString() + '" src = "not_favorite.png"/>' + "</div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
 
 	updateFavori();
 	updateParametres();
+
+	window.scrollTo(0,previousPosition.az);
 
 }
 
@@ -137,12 +160,21 @@ function rechercher() {
 }
 
 function init() {
-	rafraichirAZ(); //Par défaut on trie par ordre alphabétique
+	oldQueryLength = 0
+    vue = "az";
+
+	showAZ(); // Par défaut on affiche par ordre alphabétique
 	setInterval(rechercher, 100);
+
 	console.debug(data["name"]);
 }
 
 function showFavori() {
+
+    if (vue == "az") previousPosition.az = window.pageYOffset;
+
+    vue = "favori";
+
 	document.getElementById("champRecherche").blur();
 	document.getElementById("champRecherche").value="";
 
@@ -157,5 +189,7 @@ function showFavori() {
 		}
 		i++;
 	}
+
+	window.scrollTo(0,previousPosition.favori)
 
 }

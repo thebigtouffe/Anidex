@@ -126,6 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/bouton7"
                             android:background="@drawable/selector"
+                            android:onClick="showAZ"
                             android:text="  Alphabétique"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>

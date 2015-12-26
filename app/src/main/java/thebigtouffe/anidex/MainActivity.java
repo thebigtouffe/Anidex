@@ -19,6 +19,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,6 +37,8 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
 
     WebView WebViewMain;
+
+    private String vue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,7 @@ public class MainActivity extends Activity {
         WebViewMain.setInitialScale(1);
         WebViewMain.setWebViewClient(new WebViewClient());
         WebViewMain.loadUrl("file:///android_asset/index.html");
-
+        vue = "AZ";
 
         // crée un dossier pour télécharger les photos (si besoin)
         File dossier = new File(getExternalFilesDir(null),"/photos");
@@ -96,8 +99,6 @@ public class MainActivity extends Activity {
         }
 
 
-
-
         // crée l'action bar et le panneau de navigation
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.setDrawerShadow(R.drawable.navigation_drawer_shadow, GravityCompat.START); // dessine une jolie ombre sous le panneau
@@ -121,6 +122,32 @@ public class MainActivity extends Activity {
                 /* empty */
             }
         };
+
+        // On modifie la police des boutons du panneau
+        Button bouton1 = (Button) findViewById(R.id.bouton1);
+        bouton1.setTypeface(police_titre);
+        Button bouton2 = (Button) findViewById(R.id.bouton2);
+        bouton2.setTypeface(police_titre);
+        Button bouton3 = (Button) findViewById(R.id.bouton3);
+        bouton3.setTypeface(police_titre);
+        Button bouton4 = (Button) findViewById(R.id.bouton4);
+        bouton4.setTypeface(police_titre);
+        Button bouton5 = (Button) findViewById(R.id.bouton5);
+        bouton5.setTypeface(police_titre);
+        Button bouton6 = (Button) findViewById(R.id.bouton6);
+        bouton6.setTypeface(police_titre);
+        Button bouton7 = (Button) findViewById(R.id.bouton7);
+        bouton7.setTypeface(police_titre);
+        Button bouton8 = (Button) findViewById(R.id.bouton8);
+        bouton8.setTypeface(police_titre);
+        Button bouton9 = (Button) findViewById(R.id.bouton9);
+        bouton9.setTypeface(police_titre);
+        Button bouton10 = (Button) findViewById(R.id.bouton10);
+        bouton10.setTypeface(police_titre);
+        Button bouton11 = (Button) findViewById(R.id.bouton11);
+        bouton11.setTypeface(police_titre);
+        Button bouton12 = (Button) findViewById(R.id.bouton12);
+        bouton12.setTypeface(police_titre);
 
         mDrawerLayout.post(new Runnable() {
             @Override
@@ -166,20 +193,24 @@ public class MainActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    // on configure le comportement du bouton retour, a priori son comportement standard
-    // est inchangé par la présence de la WebView étant donné que celle-ci ne charge qu'une page.
+    // on configure le comportement du bouton retour
+    // si on est pas dans la vue AZ on retourne dans la vue AZ, sinon on quitte l'appli
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(event.getAction() == KeyEvent.ACTION_DOWN){
             switch(keyCode)
             {
                 case KeyEvent.KEYCODE_BACK:
-                    if (WebViewMain.canGoBack()) {
-                        WebViewMain.goBack();
+                    if (vue == "AZ") {
+                        // on quitte l'application quand le bouton retour est pressé en vue AZ
+                        finish();
                     }
                     else {
-                        // on quitte l'application quand le bouton retour est pressé
-                        finish();
+                        WebViewMain.loadUrl("javascript:showAZ()");
+                        DrawerLayout mDrawerLayout;
+                        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                        mDrawerLayout.closeDrawers();
+                        vue = "AZ";
                     }
                     return true;
             }
@@ -303,10 +334,22 @@ public class MainActivity extends Activity {
     }
 
     public void showFavori(View view) {
-        WebViewMain.loadUrl("javascript:showFavori()");
-        DrawerLayout mDrawerLayout;
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.closeDrawers();
+        if (vue != "favori") {
+            WebViewMain.loadUrl("javascript:showFavori()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "favori";
     }
 
+    public void showAZ(View view) {
+        if (vue != "AZ") {
+            WebViewMain.loadUrl("javascript:showAZ()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "AZ";
+    }
 }
