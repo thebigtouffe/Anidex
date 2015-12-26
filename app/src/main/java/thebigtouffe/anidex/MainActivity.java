@@ -166,7 +166,6 @@ public class MainActivity extends Activity {
         // on rafraîchit la WebView
         WebViewMain.loadUrl("javascript:updateParametres()");
         WebViewMain.loadUrl("javascript:updateFavori()");
-
     }
 
 
