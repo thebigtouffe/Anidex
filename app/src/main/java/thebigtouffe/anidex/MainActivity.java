@@ -141,7 +141,6 @@ public class MainActivity extends Activity {
                 /* empty */
             }
 
-
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
