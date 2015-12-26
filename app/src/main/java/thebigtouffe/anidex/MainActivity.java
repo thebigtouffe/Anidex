@@ -302,14 +302,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    // Exécute le script JS de tri n°1 à partir de l'interface Android
-    public void allerTri1(View view) {
-        WebViewMain.loadUrl("javascript:fonction1()");
-        DrawerLayout mDrawerLayout;
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.closeDrawers();
-    }
-
     public void showFavori(View view) {
         WebViewMain.loadUrl("javascript:showFavori()");
         DrawerLayout mDrawerLayout;

@@ -13,24 +13,20 @@
 		}
 
 		* {
-		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		-webkit-tap-highlight-color: transparent;
 		}
 
-		.search-wrapper {
-			width:90%;
-			margin: 5px;
-			text-align:center;
-			position: relative;
-
+		#search-wrapper {
+			position:relative;
+			margin:5px;
+			padding-right:15px;
 		}
 		.search-box {
-			position: relative;
-			padding: 8px;
-			padding-left: 12px;
-			width: 100%;
+			outline: 0;
+			padding: 7px;
+			width:100%;
 			font-size: 120%;
 			border: 1px solid #ccc;
-			outline: 0;
 			border-radius: 15px;
 		}
 		.search-box:focus {
@@ -38,18 +34,14 @@
 		}
 
 		.close-icon {
-			background-color: transparent;
-			outline: 0;
-			display: block;
-			width: 28px;
-			height: 28px;
+            opacity: 0;
+            display: block;
 			position: absolute;
 			z-index:100;
-			right: -15px;
+			right: 5px;
 			top: 0;
 			bottom: 0;
 			margin: auto;
-			text-align: center;
 			cursor: pointer;
 			outline: 0;
 		}
@@ -67,19 +59,25 @@
 			padding-left:6px;
 		}
 
+        .fade {
+            transition: opacity .25s ease-in-out;
+            -moz-transition: opacity .25s ease-in-out;
+            -webkit-transition: opacity .25s ease-in-out;
+        }
+
 	</style>
 
-	<script type="text/javascript" src="data.json"></script>
+	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 </head>
 
 <body onload="init()">
 
 	<div id="search">
-		<div class="search-wrapper">
+		<div id="search-wrapper">
 			<form id="Recherche">
 			<input type="text" name="champRecherche" id="champRecherche" required class="search-box" placeholder="Rechercher un animal" />
-			<a href="javascript:effacerRecherche()"><img class="close-icon" src="close-button.png"/></a>
+			<a href="javascript:effacerRecherche()"><img id="close-icon" class="close-icon fade" src="close-button.png" style="height:28px; width:28px;"/></a>
 			</form>
 		</div>
 	</div>

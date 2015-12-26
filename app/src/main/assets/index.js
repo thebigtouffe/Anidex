@@ -1,4 +1,3 @@
-var data = JSON.parse(data);
 var oldQueryLength = 0;
 
 String.prototype.sansAccent = function() {
@@ -14,11 +13,20 @@ String.prototype.sansAccent = function() {
     var noaccent = ['A','a','E','e','I','i','O','o','U','u','N','n','C','c'];
 
     var str = this;
-    for(var i = 0; i < accent.length; i++){
+    for (var i = 0; i < accent.length; i++) {
         str = str.replace(accent[i], noaccent[i]);
     }
 
     return str;
+}
+
+function triAZ (a, b) {
+    if (a.name.toLowerCase().sansAccent() === b.name.toLowerCase().sansAccent()) {
+        return 0;
+    }
+    else {
+        return (a.name.toLowerCase().sansAccent() < b.name.toLowerCase().sansAccent()) ? -1 : 1;
+    }
 }
 
 function updateFavori() {
@@ -36,7 +44,10 @@ function updateParametres() {
 	param = Android.getParametres();
 }
 
-function rafraichir() {
+function rafraichirAZ() {
+
+    data.sort(triAZ);
+
     var i = 0;
     var str = "";
     while (i < data.length) {
@@ -66,7 +77,7 @@ function effacerRecherche() {
 }
 
 function rechercher() {
-	var query = document.getElementById("champRecherche").value.toLowerCase().sansAccent();
+	var query = document.getElementById("champRecherche").value;
 	var occurence = [];
 
 	var i = 0;
@@ -80,10 +91,15 @@ function rechercher() {
 		effacerRecherche();
 	}
 
-	if (query.length > 2) {
+	if (query.length > 1) {
+
+	    // on scrolle vers le haut
+	    if (query.length > oldQueryLength) {
+	    	    window.scrollTo(0, 0);
+	    }
 
 		// on regarde les mots de la requête
-		motQuery = query.split(" ");
+		motQuery = query.toLowerCase().sansAccent().split(" ");
 
 		var i = 0;
 		while (i < data.length) {
@@ -111,11 +127,19 @@ function rechercher() {
 		oldQueryLength = query.length;
 	}
 
+    if (query.length > 0) {
+        document.getElementById("close-icon").style.opacity = '1';
+    }
+    else {
+        document.getElementById("close-icon").style.opacity = '0';
+    }
+
 }
 
 function init() {
-	rafraichir();
+	rafraichirAZ(); //Par défaut on trie par ordre alphabétique
 	setInterval(rechercher, 100);
+	console.debug(data["name"]);
 }
 
 function showFavori() {
