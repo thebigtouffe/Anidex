@@ -107,22 +107,6 @@ public class MainActivity extends Activity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.drawable.ic_drawer,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                /* empty */
-            }
-
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                /* empty */
-            }
-        };
-
         // On modifie la police des boutons du panneau
         Button bouton1 = (Button) findViewById(R.id.bouton1);
         bouton1.setTypeface(police_titre);
@@ -148,6 +132,22 @@ public class MainActivity extends Activity {
         bouton11.setTypeface(police_titre);
         Button bouton12 = (Button) findViewById(R.id.bouton12);
         bouton12.setTypeface(police_titre);
+
+        mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.drawable.ic_drawer,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                /* empty */
+            }
+
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                /* empty */
+            }
+        };
 
         mDrawerLayout.post(new Runnable() {
             @Override
