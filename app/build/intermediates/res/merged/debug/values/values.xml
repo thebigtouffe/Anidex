@@ -24,6 +24,9 @@
     <color name="apptheme_accent">@android:color/white</color>
     <color name="apptheme_primary">#27ae60</color>
     <color name="apptheme_primary_dark">#00796b</color>
+    <color name="backgroundButton">#479D57</color>
+    <color name="backgroundButton_in">#53B565</color>
+    <color name="backgroundButton_pressed">#28731F</color>
     <!-- From: file:/Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
@@ -183,7 +186,7 @@
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <!-- From: file:/Users/bubu/AndroidStudioProjects/Anidex/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
-    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="navigation_drawer_width">230dp</dimen>
     <!-- From: file:/Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
@@ -219,8 +222,6 @@
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">Anidex</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="hello_world">Hello world!</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -252,7 +253,7 @@
     </style>
     <style name="AppTheme_ActionBar_Title" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">30dp</item>
     </style>
     <!-- From: file:/Users/bubu/AndroidStudioProjects/Anidex/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/res/values/values.xml -->
     <eat-comment/>

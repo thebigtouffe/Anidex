@@ -1,5 +1,5 @@
 var oldQueryLength;
-var previousPosition = {"az" : 0, "favori" : 0};
+var previousPosition = {"az":0, "favori":0, "poids":0};
 var vue;
 
 String.prototype.sansAccent = function() {
@@ -22,12 +22,27 @@ String.prototype.sansAccent = function() {
     return str;
 }
 
+function rememberPosition() {
+     if (vue == "favori") previousPosition.favori = window.pageYOffset;
+     if (vue == "az") previousPosition.az = window.pageYOffset;
+     if (vue == "poids") previousPosition.poids = window.pageYOffset;
+}
+
 function triAZ (a, b) {
-    if (a.name.toLowerCase().sansAccent() === b.name.toLowerCase().sansAccent()) {
+    if (a.name.toLowerCase().sansAccent() == b.name.toLowerCase().sansAccent()) {
         return 0;
     }
     else {
         return (a.name.toLowerCase().sansAccent() < b.name.toLowerCase().sansAccent()) ? -1 : 1;
+    }
+}
+
+function triPoids (a, b) {
+    if (a.poids == b.poids) {
+        return 0;
+    }
+    else {
+        return (a.poids > b.poids) ? -1 : 1;
     }
 }
 
@@ -65,8 +80,7 @@ function showAZ() {
     // trie les données dans l'ordre alphabétique
     data.sort(triAZ);
 
-    if (vue == "favori") previousPosition.favori = window.pageYOffset;
-
+    rememberPosition();
     vue = "az";
 
     var i = 0;
@@ -91,6 +105,7 @@ function afficherFiche(id) {
 function effacerRecherche() {
 	document.getElementById("champRecherche").value="";
 	document.getElementById("champRecherche").focus();
+	oldQueryLength = 0;
 
 	var i = 0;
 	while (i < data.length) {
@@ -160,7 +175,7 @@ function rechercher() {
 }
 
 function init() {
-	oldQueryLength = 0
+	oldQueryLength = 0;
     vue = "az";
 
 	showAZ(); // Par défaut on affiche par ordre alphabétique
@@ -170,13 +185,12 @@ function init() {
 }
 
 function showFavori() {
-
-    if (vue == "az") previousPosition.az = window.pageYOffset;
-
+    rememberPosition();
     vue = "favori";
 
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
-	document.getElementById("champRecherche").value="";
 
 	var i = 0;
 	while (i < data.length) {
@@ -193,3 +207,31 @@ function showFavori() {
 	window.scrollTo(0,previousPosition.favori)
 
 }
+
+function showPoids() {
+    rememberPosition();
+    vue = "poids";
+
+    data.sort(triPoids);
+
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
+
+	var i = 0;
+    var str = "";
+    while (i < data.length) {
+   		str = str + '<div id="' + i.toString() + '">' + data[i].name + '<img class="favorite" id="line' + i.toString() + '" src = "not_favorite.png"/>' + data[i].poids + "</div>";
+   		i++;
+	}
+	document.getElementById("listeAnimaux").innerHTML = str;
+
+	updateFavori();
+	updateParametres();
+
+	window.scrollTo(0,previousPosition.poids)
+
+}
+
+
+

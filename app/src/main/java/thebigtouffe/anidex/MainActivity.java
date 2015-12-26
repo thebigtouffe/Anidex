@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
         WebViewMain.setInitialScale(1);
         WebViewMain.setWebViewClient(new WebViewClient());
         WebViewMain.loadUrl("file:///android_asset/index.html");
-        vue = "AZ";
+        vue = "az";
 
         // crée un dossier pour télécharger les photos (si besoin)
         File dossier = new File(getExternalFilesDir(null),"/photos");
@@ -112,6 +112,7 @@ public class MainActivity extends Activity {
         bouton1.setTypeface(police_titre);
         Button bouton2 = (Button) findViewById(R.id.bouton2);
         bouton2.setTypeface(police_titre);
+        bouton2.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
         Button bouton3 = (Button) findViewById(R.id.bouton3);
         bouton3.setTypeface(police_titre);
         Button bouton4 = (Button) findViewById(R.id.bouton4);
@@ -192,14 +193,14 @@ public class MainActivity extends Activity {
     }
 
     // on configure le comportement du bouton retour
-    // si on est pas dans la vue AZ on retourne dans la vue AZ, sinon on quitte l'appli
+    // si on est pas dans la vue az on retourne dans la vue AZ, sinon on quitte l'appli
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(event.getAction() == KeyEvent.ACTION_DOWN){
             switch(keyCode)
             {
                 case KeyEvent.KEYCODE_BACK:
-                    if (vue == "AZ") {
+                    if (vue == "az") {
                         // on quitte l'application quand le bouton retour est pressé en vue AZ
                         finish();
                     }
@@ -208,7 +209,11 @@ public class MainActivity extends Activity {
                         DrawerLayout mDrawerLayout;
                         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                         mDrawerLayout.closeDrawers();
-                        vue = "AZ";
+                        vue = "az";
+                        // met à jour l'affichage des arrière-plan des boutons du panneau
+                        unHighlightAllPanelElements();
+                        Button currentBouton = (Button) findViewById(R.id.bouton2);
+                        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
                     }
                     return true;
             }
@@ -331,6 +336,33 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void unHighlightAllPanelElements() {
+        Button bouton1 = (Button) findViewById(R.id.bouton1);
+        Button bouton2 = (Button) findViewById(R.id.bouton2);
+        Button bouton3 = (Button) findViewById(R.id.bouton3);
+        Button bouton4 = (Button) findViewById(R.id.bouton4);
+        Button bouton5 = (Button) findViewById(R.id.bouton5);
+        Button bouton6 = (Button) findViewById(R.id.bouton6);
+        Button bouton7 = (Button) findViewById(R.id.bouton7);
+        Button bouton8 = (Button) findViewById(R.id.bouton8);
+        Button bouton9 = (Button) findViewById(R.id.bouton9);
+        Button bouton10 = (Button) findViewById(R.id.bouton10);
+        Button bouton11 = (Button) findViewById(R.id.bouton11);
+        Button bouton12 = (Button) findViewById(R.id.bouton12);
+        bouton1.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton2.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton3.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton4.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton5.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton6.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton7.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton8.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton9.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton10.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton11.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        bouton12.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+    }
+
     public void showFavori(View view) {
         if (vue != "favori") {
             WebViewMain.loadUrl("javascript:showFavori()");
@@ -339,15 +371,44 @@ public class MainActivity extends Activity {
             mDrawerLayout.closeDrawers();
         }
         vue = "favori";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightAllPanelElements();
+        Button currentBouton = (Button) findViewById(R.id.bouton1);
+        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
+
     }
 
     public void showAZ(View view) {
-        if (vue != "AZ") {
+        if (vue != "az") {
             WebViewMain.loadUrl("javascript:showAZ()");
             DrawerLayout mDrawerLayout;
             mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
             mDrawerLayout.closeDrawers();
         }
-        vue = "AZ";
+        vue = "az";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightAllPanelElements();
+        Button currentBouton = (Button) findViewById(R.id.bouton2);
+        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
     }
+
+    public void showPoids(View view) {
+        if (vue != "poids") {
+            WebViewMain.loadUrl("javascript:showPoids()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "poids";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightAllPanelElements();
+        Button currentBouton = (Button) findViewById(R.id.bouton3);
+        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
+
+    }
+
+
 }

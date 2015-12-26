@@ -16,7 +16,7 @@
 
     <style name="AppTheme_ActionBar_Title" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">30dp</item>
     </style>
 
     <style name="AppTheme_ActionBar_Overflow" parent="android:Widget.ActionButton.Overflow">
