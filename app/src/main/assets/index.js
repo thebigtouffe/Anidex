@@ -77,11 +77,16 @@ function updateParametres() {
 }
 
 function showAZ() {
+	rememberPosition();
+    vue = "az";
+
     // trie les données dans l'ordre alphabétique
     data.sort(triAZ);
 
-    rememberPosition();
-    vue = "az";
+    document.getElementById("search-wrapper").style.display = "block";
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
 
     var i = 0;
     var str = "";
@@ -192,20 +197,28 @@ function showFavori() {
 	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
 
-	var i = 0;
-	while (i < data.length) {
-		numero = i.toString();
-		if (favori.indexOf(numero) == -1) {
-			document.getElementById(numero).style.display = "none";
-		}
-		else {
-			document.getElementById(numero).style.display = "block";
-		}
-		i++;
+
+	if (favori.length == 1) {
+	    document.getElementById("search-wrapper").style.display = "none";
+	    document.getElementById("listeAnimaux").innerHTML = "<div class='noFavori'> Vous n'avez pas enregistré de favori.</div>";
 	}
 
-	window.scrollTo(0,previousPosition.favori)
+	else {
+	    document.getElementById("search-wrapper").style.display = "block";
 
+        var i = 0;
+        while (i < data.length) {
+            numero = i.toString();
+            if (favori.indexOf(numero) == -1) {
+                document.getElementById(numero).style.display = "none";
+            }
+            else {
+                document.getElementById(numero).style.display = "block";
+            }
+            i++;
+        }
+        window.scrollTo(0,previousPosition.favori)
+    }
 }
 
 function showPoids() {
@@ -214,6 +227,7 @@ function showPoids() {
 
     data.sort(triPoids);
 
+    document.getElementById("search-wrapper").style.display = "block";
 	document.getElementById("champRecherche").value = "";
 	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
@@ -221,7 +235,7 @@ function showPoids() {
 	var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div id="' + i.toString() + '">' + data[i].name + '<img class="favorite" id="line' + i.toString() + '" src = "not_favorite.png"/>' + data[i].poids + "</div>";
+   		str = str + '<div class="liste" onclick="afficherFiche(' + i.toString() + ')" id="' + i.toString() + '">' + data[i].name + '<img class="favorite" id="line' + i.toString() + '" src = "not_favorite.png"/>' + data[i].poids + "</div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;

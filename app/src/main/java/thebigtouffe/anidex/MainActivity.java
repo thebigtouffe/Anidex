@@ -21,8 +21,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -340,7 +338,10 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void unHighlightPanelButton() {
+    public void unHighlightPanelButtons() {
+        // Cette fonction active tous les boutons du panneau,
+        // ce qui a pour effet d'enlever le fond plus clair pour le bouton de l'activité JS en cours
+
         Button bouton1 = (Button) findViewById(R.id.bouton1);
         Button bouton2 = (Button) findViewById(R.id.bouton2);
         Button bouton3 = (Button) findViewById(R.id.bouton3);
@@ -386,7 +387,7 @@ public class MainActivity extends Activity {
         vue = "favori";
 
         // met à jour l'affichage des arrière-plan des boutons du panneau
-        unHighlightPanelButton();
+        unHighlightPanelButtons();
         bouton.setEnabled(false);
     }
 
@@ -402,7 +403,7 @@ public class MainActivity extends Activity {
         vue = "az";
 
         // met à jour l'affichage des arrière-plan des boutons du panneau
-        unHighlightPanelButton();
+        unHighlightPanelButtons();
         bouton.setEnabled(false);
     }
 
@@ -418,7 +419,7 @@ public class MainActivity extends Activity {
         vue = "poids";
 
         // met à jour l'affichage des arrière-plan des boutons du panneau
-        unHighlightPanelButton();
+        unHighlightPanelButtons();
         bouton.setEnabled(false);
     }
 
