@@ -21,6 +21,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,8 +47,37 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //on modifie la police de l'action bar
         Typeface police_titre = Typeface.createFromAsset(getAssets(),"titre.ttf");
+
+        // On modifie la police des boutons du panneau
+        Button bouton1 = (Button) findViewById(R.id.bouton1);
+        bouton1.setTypeface(police_titre);
+        Button bouton2 = (Button) findViewById(R.id.bouton2);
+        bouton2.setTypeface(police_titre);
+        Button bouton3 = (Button) findViewById(R.id.bouton3);
+        bouton3.setTypeface(police_titre);
+        Button bouton4 = (Button) findViewById(R.id.bouton4);
+        bouton4.setTypeface(police_titre);
+        Button bouton5 = (Button) findViewById(R.id.bouton5);
+        bouton5.setTypeface(police_titre);
+        Button bouton6 = (Button) findViewById(R.id.bouton6);
+        bouton6.setTypeface(police_titre);
+        Button bouton7 = (Button) findViewById(R.id.bouton7);
+        bouton7.setTypeface(police_titre);
+        Button bouton8 = (Button) findViewById(R.id.bouton8);
+        bouton8.setTypeface(police_titre);
+        Button bouton9 = (Button) findViewById(R.id.bouton9);
+        bouton9.setTypeface(police_titre);
+        Button bouton10 = (Button) findViewById(R.id.bouton10);
+        bouton10.setTypeface(police_titre);
+        Button bouton11 = (Button) findViewById(R.id.bouton11);
+        bouton11.setTypeface(police_titre);
+        Button bouton12 = (Button) findViewById(R.id.bouton12);
+        bouton12.setTypeface(police_titre);
+        Button bouton13 = (Button) findViewById(R.id.bouton13);
+        bouton13.setTypeface(police_titre);
+
+        //on modifie la police de l'action bar
         int titleId = getResources().getIdentifier("action_bar_title", "id","android");
         TextView TextViewTitre = (TextView) findViewById(titleId);
         TextViewTitre.setTextColor(getResources().getColor(R.color.apptheme_accent));
@@ -60,6 +91,7 @@ public class MainActivity extends Activity {
         WebViewMain.setInitialScale(1);
         WebViewMain.setWebViewClient(new WebViewClient());
         WebViewMain.loadUrl("file:///android_asset/index.html");
+
         vue = "az";
 
         // crée un dossier pour télécharger les photos (si besoin)
@@ -107,32 +139,7 @@ public class MainActivity extends Activity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        // On modifie la police des boutons du panneau
-        Button bouton1 = (Button) findViewById(R.id.bouton1);
-        bouton1.setTypeface(police_titre);
-        Button bouton2 = (Button) findViewById(R.id.bouton2);
-        bouton2.setTypeface(police_titre);
-        bouton2.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
-        Button bouton3 = (Button) findViewById(R.id.bouton3);
-        bouton3.setTypeface(police_titre);
-        Button bouton4 = (Button) findViewById(R.id.bouton4);
-        bouton4.setTypeface(police_titre);
-        Button bouton5 = (Button) findViewById(R.id.bouton5);
-        bouton5.setTypeface(police_titre);
-        Button bouton6 = (Button) findViewById(R.id.bouton6);
-        bouton6.setTypeface(police_titre);
-        Button bouton7 = (Button) findViewById(R.id.bouton7);
-        bouton7.setTypeface(police_titre);
-        Button bouton8 = (Button) findViewById(R.id.bouton8);
-        bouton8.setTypeface(police_titre);
-        Button bouton9 = (Button) findViewById(R.id.bouton9);
-        bouton9.setTypeface(police_titre);
-        Button bouton10 = (Button) findViewById(R.id.bouton10);
-        bouton10.setTypeface(police_titre);
-        Button bouton11 = (Button) findViewById(R.id.bouton11);
-        bouton11.setTypeface(police_titre);
-        Button bouton12 = (Button) findViewById(R.id.bouton12);
-        bouton12.setTypeface(police_titre);
+
 
         mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.drawable.ic_drawer,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
@@ -156,7 +163,7 @@ public class MainActivity extends Activity {
             }
         });
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
+        bouton2.setEnabled(false);
     }
 
 
@@ -210,10 +217,7 @@ public class MainActivity extends Activity {
                         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                         mDrawerLayout.closeDrawers();
                         vue = "az";
-                        // met à jour l'affichage des arrière-plan des boutons du panneau
-                        unHighlightAllPanelElements();
-                        Button currentBouton = (Button) findViewById(R.id.bouton2);
-                        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
+
                     }
                     return true;
             }
@@ -336,7 +340,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void unHighlightAllPanelElements() {
+    public void unHighlightPanelButton() {
         Button bouton1 = (Button) findViewById(R.id.bouton1);
         Button bouton2 = (Button) findViewById(R.id.bouton2);
         Button bouton3 = (Button) findViewById(R.id.bouton3);
@@ -349,21 +353,30 @@ public class MainActivity extends Activity {
         Button bouton10 = (Button) findViewById(R.id.bouton10);
         Button bouton11 = (Button) findViewById(R.id.bouton11);
         Button bouton12 = (Button) findViewById(R.id.bouton12);
-        bouton1.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton2.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton3.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton4.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton5.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton6.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton7.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton8.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton9.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton10.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton11.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
-        bouton12.setBackgroundColor(getResources().getColor(R.color.backgroundButton));
+        Button bouton13 = (Button) findViewById(R.id.bouton13);
+
+        bouton1.setEnabled(true);
+        bouton2.setEnabled(true);
+        bouton3.setEnabled(true);
+        bouton4.setEnabled(true);
+        bouton5.setEnabled(true);
+        bouton6.setEnabled(true);
+        bouton7.setEnabled(true);
+        bouton8.setEnabled(true);
+        bouton9.setEnabled(true);
+        bouton10.setEnabled(true);
+        bouton11.setEnabled(true);
+        bouton12.setEnabled(true);
+        bouton13.setEnabled(true);
+
     }
 
+
+
     public void showFavori(View view) {
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        Button bouton = (Button) findViewById(R.id.bouton1);
+
         if (vue != "favori") {
             WebViewMain.loadUrl("javascript:showFavori()");
             DrawerLayout mDrawerLayout;
@@ -373,13 +386,13 @@ public class MainActivity extends Activity {
         vue = "favori";
 
         // met à jour l'affichage des arrière-plan des boutons du panneau
-        unHighlightAllPanelElements();
-        Button currentBouton = (Button) findViewById(R.id.bouton1);
-        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
-
+        unHighlightPanelButton();
+        bouton.setEnabled(false);
     }
 
     public void showAZ(View view) {
+        Button bouton = (Button) findViewById(R.id.bouton2);
+
         if (vue != "az") {
             WebViewMain.loadUrl("javascript:showAZ()");
             DrawerLayout mDrawerLayout;
@@ -389,12 +402,13 @@ public class MainActivity extends Activity {
         vue = "az";
 
         // met à jour l'affichage des arrière-plan des boutons du panneau
-        unHighlightAllPanelElements();
-        Button currentBouton = (Button) findViewById(R.id.bouton2);
-        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
+        unHighlightPanelButton();
+        bouton.setEnabled(false);
     }
 
     public void showPoids(View view) {
+        Button bouton = (Button) findViewById(R.id.bouton3);
+
         if (vue != "poids") {
             WebViewMain.loadUrl("javascript:showPoids()");
             DrawerLayout mDrawerLayout;
@@ -404,10 +418,8 @@ public class MainActivity extends Activity {
         vue = "poids";
 
         // met à jour l'affichage des arrière-plan des boutons du panneau
-        unHighlightAllPanelElements();
-        Button currentBouton = (Button) findViewById(R.id.bouton3);
-        currentBouton.setBackgroundColor(getResources().getColor(R.color.backgroundButton_in));
-
+        unHighlightPanelButton();
+        bouton.setEnabled(false);
     }
 
 

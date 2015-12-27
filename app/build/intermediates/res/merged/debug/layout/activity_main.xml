@@ -51,6 +51,7 @@
                             android:onClick="showFavori"
                             android:drawableLeft="@drawable/ic_favorite_white_24dp"
                             android:text="  Favoris"
+                            android:checked="false"
                             android:textColor="@android:color/white"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>
@@ -67,6 +68,7 @@
                             android:background="@drawable/selector"
                             android:onClick="showAZ"
                             android:text="  Alphabétique"
+                            android:checked="true"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>
 
@@ -152,7 +154,7 @@
                             android:textSize="20dp"
                             android:id="@+id/bouton7"
                             android:layout_width="fill_parent"
-                            android:layout_marginTop="-3dp"
+                            android:layout_marginTop="-1dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/vertebres"
                             android:background="@drawable/selector"
@@ -234,13 +236,27 @@
                             android:textSize="20dp"
                             android:id="@+id/bouton12"
                             android:layout_width="fill_parent"
-                            android:layout_marginTop="-3dp"
+                            android:layout_marginTop="-1dp"
                             android:layout_height="wrap_content"
                             android:textColor="@android:color/white"
                             android:layout_below="@+id/invertebres"
                             android:background="@drawable/selector"
                             android:drawableLeft="@drawable/ic_butterfly"
                             android:text="  Insectes"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+                        <Button
+                            android:textSize="20dp"
+                            android:id="@+id/bouton13"
+                            android:layout_width="fill_parent"
+                            android:layout_marginTop="-3dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_below="@+id/bouton12"
+                            android:background="@drawable/selector"
+                            android:drawableLeft="@drawable/ic_crab"
+                            android:text="  Crustacées"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>
 

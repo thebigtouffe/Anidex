@@ -1535,20 +1535,21 @@ containing a value of this type.
         public static final int ic_bird=0x7f020040;
         public static final int ic_butterfly=0x7f020041;
         public static final int ic_cat_white_24dp=0x7f020042;
-        public static final int ic_drawer=0x7f020043;
-        public static final int ic_favorite_white_24dp=0x7f020044;
-        public static final int ic_fish_white_24dp=0x7f020045;
-        public static final int ic_frog=0x7f020046;
-        public static final int ic_launcher=0x7f020047;
-        public static final int ic_public_white_24dp=0x7f020048;
-        public static final int ic_search_animal=0x7f020049;
-        public static final int ic_settings_white_24dp=0x7f02004a;
-        public static final int ic_sort_by_alpha_white_24dp=0x7f02004b;
-        public static final int ic_sort_white_24dp=0x7f02004c;
-        public static final int ic_timelapse_white_24dp=0x7f02004d;
-        public static final int ic_weight=0x7f02004e;
-        public static final int navigation_drawer_shadow=0x7f02004f;
-        public static final int selector=0x7f020050;
+        public static final int ic_crab=0x7f020043;
+        public static final int ic_drawer=0x7f020044;
+        public static final int ic_favorite_white_24dp=0x7f020045;
+        public static final int ic_fish_white_24dp=0x7f020046;
+        public static final int ic_frog=0x7f020047;
+        public static final int ic_launcher=0x7f020048;
+        public static final int ic_public_white_24dp=0x7f020049;
+        public static final int ic_search_animal=0x7f02004a;
+        public static final int ic_settings_white_24dp=0x7f02004b;
+        public static final int ic_sort_by_alpha_white_24dp=0x7f02004c;
+        public static final int ic_sort_white_24dp=0x7f02004d;
+        public static final int ic_timelapse_white_24dp=0x7f02004e;
+        public static final int ic_weight=0x7f02004f;
+        public static final int navigation_drawer_shadow=0x7f020050;
+        public static final int selector=0x7f020051;
     }
     public static final class id {
         public static final int action_bar=0x7f0c0040;
@@ -1564,7 +1565,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0c003d;
         public static final int action_mode_bar_stub=0x7f0c003c;
         public static final int action_mode_close_button=0x7f0c0025;
-        public static final int action_settings=0x7f0c0063;
+        public static final int action_settings=0x7f0c0064;
         public static final int activity_chooser_view_content=0x7f0c0026;
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c0016;
@@ -1573,6 +1574,7 @@ containing a value of this type.
         public static final int bouton10=0x7f0c005e;
         public static final int bouton11=0x7f0c005f;
         public static final int bouton12=0x7f0c0061;
+        public static final int bouton13=0x7f0c0062;
         public static final int bouton2=0x7f0c0054;
         public static final int bouton3=0x7f0c0055;
         public static final int bouton4=0x7f0c0056;
@@ -1600,7 +1602,7 @@ containing a value of this type.
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000d;
         public static final int icon=0x7f0c002b;
-        public static final int identification=0x7f0c0064;
+        public static final int identification=0x7f0c0065;
         public static final int ifRoom=0x7f0c0018;
         public static final int image=0x7f0c0028;
         public static final int invertebres=0x7f0c0060;
@@ -1612,7 +1614,7 @@ containing a value of this type.
         public static final int never=0x7f0c0019;
         public static final int none=0x7f0c000e;
         public static final int normal=0x7f0c000a;
-        public static final int param=0x7f0c0065;
+        public static final int param=0x7f0c0066;
         public static final int parentPanel=0x7f0c002d;
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
@@ -1650,7 +1652,7 @@ containing a value of this type.
         public static final int vertebres=0x7f0c005a;
         public static final int webview_fiche=0x7f0c004f;
         public static final int webview_main=0x7f0c0051;
-        public static final int webview_param=0x7f0c0062;
+        public static final int webview_param=0x7f0c0063;
         public static final int withText=0x7f0c001a;
         public static final int wrap_content=0x7f0c001d;
     }
