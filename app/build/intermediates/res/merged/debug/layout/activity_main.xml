@@ -112,6 +112,7 @@
                             android:textColor="@android:color/white"
                             android:background="@drawable/selector"
                             android:drawableLeft="@drawable/ic_timelapse_white_24dp"
+                            android:onClick="showEsperance"
                             android:text="  Espérance de vie"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>
@@ -126,6 +127,7 @@
                             android:layout_below="@+id/bouton5"
                             android:background="@drawable/selector"
                             android:drawableLeft="@drawable/ic_public_white_24dp"
+                            android:onClick="showBiome"
                             android:text="  Écosystème"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>

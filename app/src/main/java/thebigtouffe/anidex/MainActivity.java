@@ -439,5 +439,37 @@ public class MainActivity extends Activity {
         bouton.setEnabled(false);
     }
 
+    public void showEsperance(View view) {
+        Button bouton = (Button) findViewById(R.id.bouton5);
+
+        if (vue != "esperance") {
+            WebViewMain.loadUrl("javascript:showEsperance()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "esperance";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightPanelButtons();
+        bouton.setEnabled(false);
+    }
+
+    public void showBiome(View view) {
+        Button bouton = (Button) findViewById(R.id.bouton6);
+
+        if (vue != "biome") {
+            WebViewMain.loadUrl("javascript:showBiome()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "biome";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightPanelButtons();
+        bouton.setEnabled(false);
+    }
+
 
 }

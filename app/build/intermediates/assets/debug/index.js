@@ -27,7 +27,7 @@ function rememberPosition() {
      if (vue == "az") previousPosition.az = window.pageYOffset;
      if (vue == "poids") previousPosition.poids = window.pageYOffset;
      if (vue == "taille") previousPosition.taille = window.pageYOffset;
-
+     if (vue == "esperance") previousPosition.esperance = window.pageYOffset;
 }
 
 function triAZ (a, b) {
@@ -54,6 +54,15 @@ function triTaille (a, b) {
     }
     else {
         return (a.taille > b.taille) ? -1 : 1;
+    }
+}
+
+function triEsperance (a, b) {
+    if (a.esperance == b.esperance) {
+        return 0;
+    }
+    else {
+        return (a.esperance > b.esperance) ? -1 : 1;
     }
 }
 
@@ -279,5 +288,47 @@ function showTaille() {
 	updateParametres();
 
 	window.scrollTo(0,previousPosition.taille)
+
+}
+
+function showEsperance() {
+    rememberPosition();
+    vue = "esperance";
+
+    data.sort(triEsperance);
+
+    document.getElementById("search-wrapper").style.display = "block";
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
+
+	var i = 0;
+    var str = "";
+    while (i < data.length) {
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + data[i].esperance + "</div>";
+   		i++;
+	}
+	document.getElementById("listeAnimaux").innerHTML = str;
+
+	updateFavori();
+	updateParametres();
+
+	window.scrollTo(0,previousPosition.esperance)
+
+}
+
+function showBiome() {
+    rememberPosition();
+    vue = "biome";
+
+    data.sort(triEsperance);
+
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
+	document.getElementById("search-wrapper").style.display = "none";
+
+	updateFavori();
+	updateParametres();
 
 }
