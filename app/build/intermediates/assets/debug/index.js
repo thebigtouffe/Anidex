@@ -111,7 +111,7 @@ function showAZ() {
     var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + "</div></div>";
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + "<img class ='thumb' src='images/thumb.jpg' />" + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + "</div></div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
@@ -134,7 +134,7 @@ function effacerRecherche() {
 
 	var i = 0;
 	while (i < data.length) {
-		document.getElementById(i.toString()).style.display = "block";
+		document.getElementById(data[i].id.toString()).style.display = "block";
 		i++;
 	}
 }

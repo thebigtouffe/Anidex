@@ -31,7 +31,7 @@
             android:layout_width="@dimen/navigation_drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="@android:color/white">
+            android:background="@color/backgroundButton">
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton1"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton2"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"
@@ -73,7 +73,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton3"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"
@@ -88,7 +88,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton4"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"
@@ -103,7 +103,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton5"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"
@@ -118,7 +118,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton6"
                             android:layout_width="fill_parent"
                             android:textColor="@android:color/white"
@@ -154,7 +154,7 @@
                             />
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton7"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-1dp"
@@ -168,7 +168,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton8"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"
@@ -182,7 +182,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton9"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"
@@ -196,7 +196,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton10"
                             android:layout_width="fill_parent"
                             android:textColor="@android:color/white"
@@ -210,7 +210,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton11"
                             android:layout_width="fill_parent"
                             android:textColor="@android:color/white"
@@ -236,7 +236,7 @@
                             android:textColor="@android:color/white"
                             />
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton12"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-1dp"
@@ -250,7 +250,7 @@
                             android:paddingLeft="8dp"/>
 
                         <Button
-                            android:textSize="20dp"
+                            android:textSize="20sp"
                             android:id="@+id/bouton13"
                             android:layout_width="fill_parent"
                             android:layout_marginTop="-3dp"

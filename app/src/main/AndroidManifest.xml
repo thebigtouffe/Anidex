@@ -26,9 +26,9 @@
 
         <activity
             android:name=".Fiche"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_fiche" >
         </activity>
+
         <activity
             android:name=".Param"
             android:label="@string/app_name"

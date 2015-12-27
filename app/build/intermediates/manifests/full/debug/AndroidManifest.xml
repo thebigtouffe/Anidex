@@ -29,8 +29,7 @@
         </activity>
         <activity
             android:name="thebigtouffe.anidex.Fiche"
-            android:label="@string/title_activity_fiche"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_fiche" >
         </activity>
         <activity
             android:name="thebigtouffe.anidex.Param"

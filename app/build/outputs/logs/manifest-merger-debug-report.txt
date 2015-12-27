@@ -57,11 +57,9 @@ ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest
 	android:name
 		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:22:27-74
 activity#thebigtouffe.anidex.Fiche
-ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:27:9-31:20
-	android:screenOrientation
-		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:29:13-49
+ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:27:9-30:20
 	android:label
-		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:30:13-57
+		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:29:13-57
 	android:name
 		ADDED from /Users/bubu/AndroidStudioProjects/Anidex/app/src/main/AndroidManifest.xml:28:13-34
 activity#thebigtouffe.anidex.Param
