@@ -26,6 +26,8 @@ function rememberPosition() {
      if (vue == "favori") previousPosition.favori = window.pageYOffset;
      if (vue == "az") previousPosition.az = window.pageYOffset;
      if (vue == "poids") previousPosition.poids = window.pageYOffset;
+     if (vue == "taille") previousPosition.taille = window.pageYOffset;
+
 }
 
 function triAZ (a, b) {
@@ -43,6 +45,15 @@ function triPoids (a, b) {
     }
     else {
         return (a.poids > b.poids) ? -1 : 1;
+    }
+}
+
+function triTaille (a, b) {
+    if (a.taille == b.taille) {
+        return 0;
+    }
+    else {
+        return (a.taille > b.taille) ? -1 : 1;
     }
 }
 
@@ -185,8 +196,6 @@ function init() {
 
 	showAZ(); // Par défaut on affiche par ordre alphabétique
 	setInterval(rechercher, 100);
-
-	console.debug(data["nom"]);
 }
 
 function showFavori() {
@@ -244,5 +253,31 @@ function showPoids() {
 	updateParametres();
 
 	window.scrollTo(0,previousPosition.poids)
+
+}
+
+function showTaille() {
+    rememberPosition();
+    vue = "taille";
+
+    data.sort(triTaille);
+
+    document.getElementById("search-wrapper").style.display = "block";
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
+
+	var i = 0;
+    var str = "";
+    while (i < data.length) {
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + data[i].taille + "</div>";
+   		i++;
+	}
+	document.getElementById("listeAnimaux").innerHTML = str;
+
+	updateFavori();
+	updateParametres();
+
+	window.scrollTo(0,previousPosition.taille)
 
 }

@@ -97,6 +97,7 @@
                             android:textColor="@android:color/white"
                             android:background="@drawable/selector"
                             android:drawableLeft="@drawable/ic_sort_white_24dp"
+                            android:onClick="showTaille"
                             android:text="  Taille adulte"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>

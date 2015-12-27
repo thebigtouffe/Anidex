@@ -423,5 +423,21 @@ public class MainActivity extends Activity {
         bouton.setEnabled(false);
     }
 
+    public void showTaille(View view) {
+        Button bouton = (Button) findViewById(R.id.bouton4);
+
+        if (vue != "taille") {
+            WebViewMain.loadUrl("javascript:showTaille()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "taille";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightPanelButtons();
+        bouton.setEnabled(false);
+    }
+
 
 }
