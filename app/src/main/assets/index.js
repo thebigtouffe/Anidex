@@ -1,5 +1,5 @@
 var oldQueryLength;
-var previousPosition = {"az":0, "favori":0, "poids":0};
+var previousPosition = {"favori":0, "az":0, "poids":0, "taille":0, "esperance":0};
 var vue;
 
 String.prototype.sansAccent = function() {
@@ -178,10 +178,10 @@ function rechercher() {
 			}
 
 			if (occurence[i] > 0) {
-   				document.getElementById(i.toString()).style.display = "block";
+   				document.getElementById(data[i].id.toString()).style.display = "block";
 			}
 			else {
-				document.getElementById(i.toString()).style.display = "none";
+				document.getElementById(data[i].id.toString()).style.display = "none";
 			}
 
 			i++;
