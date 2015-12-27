@@ -111,7 +111,10 @@ function showAZ() {
     var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + "<img class ='thumb' src='images/thumb.jpg' />" + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + "</div></div>";
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id.toString() + ".jpg' /></div>";
+   		str = str + "<div class='infos'><div class='noms'>" + data[i].nom + '</div>';
+   		str = str + '<div class="pictogrammes"><img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>  <img class="favorite" src = "not_favorite.png"/>';
+   		str = str + "</div></div></div></div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
