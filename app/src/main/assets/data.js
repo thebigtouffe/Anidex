@@ -1,7 +1,7 @@
 data = [
 {
 "id":1,
-"nom":"Ashwin",
+"nom":"Ornithorhynchus anatinus",
 "poids":30,
 "taille":150,
 "esperance":18
@@ -110,9 +110,9 @@ data = [
 },{
 
 'id':16,
-'nom':'Ashwin',
+'nom':'Ornithorhynchus anatinus',
 "poids":30,
-"taille":150,
+"taille":1500,
 "esperance":18
 },{
 
