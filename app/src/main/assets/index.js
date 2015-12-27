@@ -29,11 +29,11 @@ function rememberPosition() {
 }
 
 function triAZ (a, b) {
-    if (a.name.toLowerCase().sansAccent() == b.name.toLowerCase().sansAccent()) {
+    if (a.nom.toLowerCase().sansAccent() == b.nom.toLowerCase().sansAccent()) {
         return 0;
     }
     else {
-        return (a.name.toLowerCase().sansAccent() < b.name.toLowerCase().sansAccent()) ? -1 : 1;
+        return (a.nom.toLowerCase().sansAccent() < b.nom.toLowerCase().sansAccent()) ? -1 : 1;
     }
 }
 
@@ -60,7 +60,7 @@ function updateFavori() {
 	if (vue == "favori") {
         var i = 0;
         while (i < data.length) {
-            numero = i.toString();
+            numero = data[i].id.toString();
             if (favori.indexOf(numero) == -1) {
                 document.getElementById(numero).style.display = "none";
             }
@@ -91,7 +91,7 @@ function showAZ() {
     var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + i.toString() + ')" id="' + i.toString() + '">' + data[i].name + '<img class="favorite" id="line' + i.toString() + '" src = "not_favorite.png"/>' + "</div></div>";
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + "</div></div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
@@ -148,7 +148,7 @@ function rechercher() {
 		while (i < data.length) {
 			var j = 0;
 			while (j < motQuery.length) {
-				if (data[i].name.toLowerCase().sansAccent().indexOf(motQuery[j]) > -1) {
+				if (data[i].nom.toLowerCase().sansAccent().indexOf(motQuery[j]) > -1) {
 					occurence[i]++;
 				}
 				else {
@@ -185,8 +185,6 @@ function init() {
 
 	showAZ(); // Par défaut on affiche par ordre alphabétique
 	setInterval(rechercher, 100);
-
-	console.debug(data["name"]);
 }
 
 function showFavori() {
@@ -208,7 +206,7 @@ function showFavori() {
 
         var i = 0;
         while (i < data.length) {
-            numero = i.toString();
+            numero = data[i].id.toString();
             if (favori.indexOf(numero) == -1) {
                 document.getElementById(numero).style.display = "none";
             }
@@ -235,7 +233,7 @@ function showPoids() {
 	var i = 0;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + i.toString() + ')" id="' + i.toString() + '">' + data[i].name + '<img class="favorite" id="line' + i.toString() + '" src = "not_favorite.png"/>' + data[i].poids + "</div>";
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + data[i].poids + "</div>";
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
