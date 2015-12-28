@@ -1,5 +1,5 @@
 var oldQueryLength;
-var previousPosition = {"favori":0, "az":0, "poids":0, "taille":0, "esperance":0};
+var previousPositions = {"seen":0, "favori":0, "az":0, "poids":0, "taille":0, "esperance":0};
 var vue;
 
 String.prototype.sansAccent = function() {
@@ -22,12 +22,13 @@ String.prototype.sansAccent = function() {
     return str;
 }
 
-function rememberPosition() {
-     if (vue == "favori") previousPosition.favori = window.pageYOffset;
-     if (vue == "az") previousPosition.az = window.pageYOffset;
-     if (vue == "poids") previousPosition.poids = window.pageYOffset;
-     if (vue == "taille") previousPosition.taille = window.pageYOffset;
-     if (vue == "esperance") previousPosition.esperance = window.pageYOffset;
+function rememberPositions() {
+     if (vue == "seen") previousPositions.seen = window.pageYOffset;
+     if (vue == "favori") previousPositions.favori = window.pageYOffset;
+     if (vue == "az") previousPositions.az = window.pageYOffset;
+     if (vue == "poids") previousPositions.poids = window.pageYOffset;
+     if (vue == "taille") previousPositions.taille = window.pageYOffset;
+     if (vue == "esperance") previousPositions.esperance = window.pageYOffset;
 }
 
 function triAZ (a, b) {
@@ -93,7 +94,7 @@ function updateFavori() {
 }
 
 function updateSeen() {
-	// les aperçus récupéré d'Android sont un string qu'on convertit en liste
+	// les aperçus récupérés d'Android sont un string qu'on convertit en liste
 	seen = Android.getSeen().split(", ");
 
 	var i = 1;
@@ -123,7 +124,7 @@ function updateParametres() {
 }
 
 function showAZ() {
-	rememberPosition();
+	rememberPositions();
     vue = "az";
 
     // trie les données dans l'ordre alphabétique
@@ -135,13 +136,31 @@ function showAZ() {
 	document.getElementById("champRecherche").blur();
 
     var i = 0;
+    var taille;
+    var poids;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id.toString() + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].nom + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille coucoucouc Poids coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc </div>';
-   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="fav' + data[i].id.toString() + '" src = "not_favorite.png"/>  <img class="pictogramme" id="seen'+ data[i].id.toString() + '" src = "not_seen.png"/>';
+
+        if (data[i].taille > 100) {
+            taille = (Math.ceil(data[i].taille/10) / 10).toString().replace(".", ",") + ' m';
+        }
+        else {
+            taille = (Math.ceil(data[i].taille)).toString().replace(".", ",") + ' cm';
+        }
+
+        if (data[i].poids > 1000) {
+            poids = (Math.ceil(data[i].poids/10) / 100).toString().replace(".", ",") + ' kg';
+        }
+        else {
+            poids = (Math.ceil(data[i].poids)).toString().replace(".", ",") + ' g';
+        }
+
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + ' Poids : ' + poids + '</div>';
+   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
    		str = str + "</div></div></div></div></div></div>";
+
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
@@ -150,7 +169,7 @@ function showAZ() {
 	updateParametres();
 	updateSeen();
 
-	window.scrollTo(0,previousPosition.az);
+	window.scrollTo(0,previousPositions.az);
 
 }
 
@@ -239,7 +258,7 @@ function init() {
 }
 
 function showFavori() {
-    rememberPosition();
+    rememberPositions();
     vue = "favori";
 
 	document.getElementById("champRecherche").value = "";
@@ -266,12 +285,12 @@ function showFavori() {
             }
             i++;
         }
-        window.scrollTo(0,previousPosition.favori)
+        window.scrollTo(0,previousPositions.favori)
     }
 }
 
 function showSeen() {
-    rememberPosition();
+    rememberPositions();
     vue = "seen";
 
 	document.getElementById("champRecherche").value = "";
@@ -298,12 +317,12 @@ function showSeen() {
             }
             i++;
         }
-        window.scrollTo(0,previousPosition.favori)
+        window.scrollTo(0,previousPositions.favori)
     }
 }
 
 function showPoids() {
-    rememberPosition();
+    rememberPositions();
     vue = "poids";
 
     data.sort(triPoids);
@@ -324,12 +343,12 @@ function showPoids() {
 	updateFavori();
 	updateParametres();
 
-	window.scrollTo(0,previousPosition.poids)
+	window.scrollTo(0,previousPositions.poids)
 
 }
 
 function showTaille() {
-    rememberPosition();
+    rememberPositions();
     vue = "taille";
 
     data.sort(triTaille);
@@ -350,12 +369,12 @@ function showTaille() {
 	updateFavori();
 	updateParametres();
 
-	window.scrollTo(0,previousPosition.taille)
+	window.scrollTo(0,previousPositions.taille)
 
 }
 
 function showEsperance() {
-    rememberPosition();
+    rememberPositions();
     vue = "esperance";
 
     data.sort(triEsperance);
@@ -376,12 +395,12 @@ function showEsperance() {
 	updateFavori();
 	updateParametres();
 
-	window.scrollTo(0,previousPosition.esperance)
+	window.scrollTo(0,previousPositions.esperance)
 
 }
 
 function showBiome() {
-    rememberPosition();
+    rememberPositions();
     vue = "biome";
 
     data.sort(triEsperance);
