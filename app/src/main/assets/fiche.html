@@ -10,14 +10,13 @@
 var id = 0;
 
 function path () {
-if (internet==0) {
-document.getElementById("demo").innerHTML = '<img alt="myImagenotshowing" src="' + path_sd + 'photos/image1.jpg">';
-}
+    if (internet==0) {
+        document.getElementById("demo").innerHTML = '<img alt="myImagenotshowing" src="' + path_sd + 'photos/image1.jpg">';
+    }
 
-if (internet==1) {
-document.getElementById("demo").innerHTML = '<img alt="myImagenotshowing" src="http://ms91310.fr/stick/thumbs/img-2.jpg">';
-}
-
+    if (internet==1) {
+        document.getElementById("demo").innerHTML = '<img alt="myImagenotshowing" src="http://ms91310.fr/stick/thumbs/img-2.jpg">';
+    }
 }
 
 function extraire(variable) {
@@ -35,6 +34,10 @@ function favori() {
     Android.AjouterFavori(id);
 }
 
+function seen() {
+    Android.AjouterSeen(id);
+}
+
 
 </script>
 
@@ -46,10 +49,9 @@ function favori() {
 <img alt="myImagenotshowing" src="file://mnt/sdcard/Download/Stonehenge.jpg">
 
 <input type="button" value="Ajouter aux favori" onClick="favori();">
+<input type="button" value="Ajouter aux aperçus" onClick="seen();">
 <input type="button" value="Afficher path" onClick="path();">
 <br>
-
-
 
 </body>
 </html>

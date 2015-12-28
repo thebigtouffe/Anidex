@@ -72,7 +72,7 @@ function updateFavori() {
 
 	var i = 1;
 	while (i<favori.length) {
-		document.getElementById('line' + favori[i]).src = "favorite.png";
+		document.getElementById('fav' + favori[i]).src = "favorite.png";
 		i++;
 	}
 
@@ -82,6 +82,32 @@ function updateFavori() {
         while (i < data.length) {
             numero = data[i].id.toString();
             if (favori.indexOf(numero) == -1) {
+                document.getElementById(numero).style.display = "none";
+            }
+            else {
+                document.getElementById(numero).style.display = "block";
+            }
+            i++;
+        }
+	}
+}
+
+function updateSeen() {
+	// les aperçus récupéré d'Android sont un string qu'on convertit en liste
+	seen = Android.getSeen().split(", ");
+
+	var i = 1;
+	while (i<seen.length) {
+		document.getElementById('seen' + seen[i]).src = "seen.png";
+		i++;
+	}
+
+    // Si on est dans la vue aperçus on actualise la liste des aperçus affichés
+	if (vue == "seen") {
+        var i = 0;
+        while (i < data.length) {
+            numero = data[i].id.toString();
+            if (seen.indexOf(numero) == -1) {
                 document.getElementById(numero).style.display = "none";
             }
             else {
@@ -113,8 +139,8 @@ function showAZ() {
     while (i < data.length) {
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id.toString() + ".jpg' /></div>";
    		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].nom + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc </div>';
-   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>  <img class="pictogramme" src = "not_seen.png"/>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille coucoucouc Poids coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc coucoucouc </div>';
+   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="fav' + data[i].id.toString() + '" src = "not_favorite.png"/>  <img class="pictogramme" id="seen'+ data[i].id.toString() + '" src = "not_seen.png"/>';
    		str = str + "</div></div></div></div></div></div>";
    		i++;
 	}
@@ -122,6 +148,7 @@ function showAZ() {
 
 	updateFavori();
 	updateParametres();
+	updateSeen();
 
 	window.scrollTo(0,previousPosition.az);
 
@@ -232,6 +259,38 @@ function showFavori() {
         while (i < data.length) {
             numero = data[i].id.toString();
             if (favori.indexOf(numero) == -1) {
+                document.getElementById(numero).style.display = "none";
+            }
+            else {
+                document.getElementById(numero).style.display = "block";
+            }
+            i++;
+        }
+        window.scrollTo(0,previousPosition.favori)
+    }
+}
+
+function showSeen() {
+    rememberPosition();
+    vue = "seen";
+
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
+
+
+	if (seen.length == 1) {
+	    document.getElementById("search-wrapper").style.display = "none";
+	    document.getElementById("listeAnimaux").innerHTML = "<div class='noFavori'> Vous n'avez pas encore d'aperçus.</div>";
+	}
+
+	else {
+	    document.getElementById("search-wrapper").style.display = "block";
+
+        var i = 0;
+        while (i < data.length) {
+            numero = data[i].id.toString();
+            if (seen.indexOf(numero) == -1) {
                 document.getElementById(numero).style.display = "none";
             }
             else {

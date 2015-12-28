@@ -44,6 +44,20 @@
 
                         <Button
                             android:textSize="20sp"
+                            android:id="@+id/bouton0"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector"
+                            android:drawableLeft="@drawable/ic_eye_white_24dp"
+                            android:onClick="showSeen"
+                            android:text="  Aperçus"
+                            android:textColor="@android:color/white"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="8dp"/>
+
+
+                        <Button
+                            android:textSize="20sp"
                             android:id="@+id/bouton1"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -51,18 +65,39 @@
                             android:onClick="showFavori"
                             android:drawableLeft="@drawable/ic_favorite_white_24dp"
                             android:text="  Favoris"
-                            android:checked="false"
+                            android:layout_below="@+id/bouton0"
                             android:textColor="@android:color/white"
                             android:gravity="left|center_vertical"
                             android:paddingLeft="8dp"/>
+
+                        <ImageView
+                            android:id="@+id/separateur0"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/bouton1"
+                            android:layout_alignParentLeft="true"
+                            android:background="#EAFBEE" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tri"
+                            android:layout_below="@+id/separateur0"
+                            android:background="@color/backgroundButton"
+                            android:textSize="12dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="2dp"
+                            android:text="TRI"
+                            android:textColor="@android:color/white"
+                            />
 
                         <Button
                             android:textSize="20sp"
                             android:id="@+id/bouton2"
                             android:layout_width="fill_parent"
-                            android:layout_marginTop="-3dp"
+                            android:layout_marginTop="-1dp"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/bouton1"
+                            android:layout_below="@+id/tri"
                             android:textColor="@android:color/white"
                             android:drawableLeft="@drawable/ic_sort_by_alpha_white_24dp"
                             android:background="@drawable/selector"

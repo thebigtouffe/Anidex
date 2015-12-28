@@ -84,6 +84,22 @@ public class Fiche extends Activity {
                 e.printStackTrace();
             }
         }
+
+        public void AjouterSeen(String id) {
+
+            try {
+                File my_file_name = new File(getExternalFilesDir(null), "seen.txt");
+                Writer output;
+                output = new BufferedWriter(new FileWriter(my_file_name, true));
+
+                output.append(", " + id);
+                output.close();
+                Toast.makeText(mContext, "Aperçu ajouté", Toast.LENGTH_SHORT).show();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

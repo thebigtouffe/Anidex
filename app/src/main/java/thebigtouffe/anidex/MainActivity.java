@@ -48,6 +48,8 @@ public class MainActivity extends Activity {
         Typeface police_titre = Typeface.createFromAsset(getAssets(),"titre.ttf");
 
         // On modifie la police des boutons du panneau
+        Button bouton0 = (Button) findViewById(R.id.bouton0);
+        bouton0.setTypeface(police_titre);
         Button bouton1 = (Button) findViewById(R.id.bouton1);
         bouton1.setTypeface(police_titre);
         Button bouton2 = (Button) findViewById(R.id.bouton2);
@@ -112,6 +114,22 @@ public class MainActivity extends Activity {
             }
         }
 
+        // crée le fichier des aperçus si inexistant
+        File seen = new File(getExternalFilesDir(null), "seen.txt");
+        if(!seen.exists()) {
+            try {
+                InputStream is = getAssets().open("seen.txt");
+                OutputStream os = new FileOutputStream(seen);
+                byte[] data = new byte[is.available()];
+                is.read(data);
+                os.write(data);
+                is.close();
+                os.close();
+            } catch (IOException e) {
+                Log.w("ExternalStorage", "Error writing " + seen, e);
+            }
+        }
+
         // crée le fichier des paramètres si inexistant
         File settings = new File(getExternalFilesDir(null), "settings.txt");
         if(!settings.exists()) {
@@ -136,8 +154,6 @@ public class MainActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-
-
 
         mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.drawable.ic_drawer,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
@@ -171,6 +187,7 @@ public class MainActivity extends Activity {
 
         // on rafraîchit la WebView
         WebViewMain.loadUrl("javascript:updateParametres()");
+        WebViewMain.loadUrl("javascript:updateSeen()");
         WebViewMain.loadUrl("javascript:updateFavori()");
     }
 
@@ -307,6 +324,43 @@ public class MainActivity extends Activity {
             return favori_js;
         }
 
+        public String getSeen() {
+            // lit le fichier des aperçus puis transfère les données vers la page HTML
+            File seen = new File(getExternalFilesDir(null), "seen.txt");
+            String seen_js = "";
+            try {
+                FileReader fileReader = new FileReader(seen);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+                bufferedReader.close();
+
+                String[] seen_liste;
+                seen_liste = lines.toArray(new String[lines.size()]);
+
+
+                int i = 0;
+                while (i<seen_liste.length-1) {
+                    seen_js = seen_js + seen_liste[i];
+                    i=i+1;
+                }
+                seen_js = seen_js + seen_liste[i];
+
+
+                //WebViewMain.loadUrl(seen_js);
+                Log.w("Seen", seen_js);
+
+            }
+            catch (IOException e) {
+                // Impossible de lire le fichier
+                Log.w("ExternalStorage", "Error reading " + seen, e);
+            }
+            return seen_js;
+        }
+
         public String getParametres() {
             // lit le fichier des paramètres puis transfère les données vers la page HTML
             File settings = new File(getExternalFilesDir(null), "settings.txt");
@@ -342,6 +396,7 @@ public class MainActivity extends Activity {
         // Cette fonction active tous les boutons du panneau,
         // ce qui a pour effet d'enlever le fond plus clair pour le bouton de l'activité JS en cours
 
+        Button bouton0 = (Button) findViewById(R.id.bouton0);
         Button bouton1 = (Button) findViewById(R.id.bouton1);
         Button bouton2 = (Button) findViewById(R.id.bouton2);
         Button bouton3 = (Button) findViewById(R.id.bouton3);
@@ -356,6 +411,7 @@ public class MainActivity extends Activity {
         Button bouton12 = (Button) findViewById(R.id.bouton12);
         Button bouton13 = (Button) findViewById(R.id.bouton13);
 
+        bouton0.setEnabled(true);
         bouton1.setEnabled(true);
         bouton2.setEnabled(true);
         bouton3.setEnabled(true);
@@ -372,7 +428,22 @@ public class MainActivity extends Activity {
 
     }
 
+    public void showSeen(View view) {
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        Button bouton = (Button) findViewById(R.id.bouton0);
 
+        if (vue != "seen") {
+            WebViewMain.loadUrl("javascript:showSeen()");
+            DrawerLayout mDrawerLayout;
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.closeDrawers();
+        }
+        vue = "seen";
+
+        // met à jour l'affichage des arrière-plan des boutons du panneau
+        unHighlightPanelButtons();
+        bouton.setEnabled(false);
+    }
 
     public void showFavori(View view) {
         // met à jour l'affichage des arrière-plan des boutons du panneau
