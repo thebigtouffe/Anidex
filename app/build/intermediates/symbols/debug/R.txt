@@ -437,8 +437,9 @@ int drawable ic_sort_by_alpha_white_24dp 0x7f02004c
 int drawable ic_sort_white_24dp 0x7f02004d
 int drawable ic_timelapse_white_24dp 0x7f02004e
 int drawable ic_weight 0x7f02004f
-int drawable navigation_drawer_shadow 0x7f020050
-int drawable selector 0x7f020051
+int drawable ic_weight_kilogram_white_24dp 0x7f020050
+int drawable navigation_drawer_shadow 0x7f020051
+int drawable selector 0x7f020052
 int id action_bar 0x7f0c0040
 int id action_bar_activity_content 0x7f0c0000
 int id action_bar_container 0x7f0c003f

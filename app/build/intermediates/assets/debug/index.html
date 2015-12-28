@@ -10,6 +10,11 @@
 			font-family: GaramondItalic;
 			src: url("fonts/GaramondItalic.otf") format("opentype");
 		}
+
+        @font-face {
+        font-family: Titre;
+        src: url("titre.ttf") format("truetype");
+        }
 		
 		html, body {
 			-webkit-user-select: none;
@@ -62,7 +67,6 @@
 			z-index:100;
 			text-align:center;
 			background: -webkit-linear-gradient(top, rgba(250,255,250,1), rgba(255,255,255, 0));
-	
 		}
 		
 		#content {
@@ -75,16 +79,9 @@
             -webkit-transition: opacity .25s ease-in-out;
         }
 
-        .favorite {
-            width:25px;
-            height:25px;
-        }
-
         .liste {
         height:80px;
         padding-left:6px;
-
-        font-family: 'GaramondItalic';
 
         border-style: none none solid none;
         border-width: 0 0 1px 0;
@@ -104,30 +101,77 @@
         }
 
         .infos {
+        position: relative;
         overflow: hidden;
-        padding-left:5px;
-        padding-right:5px;
-        text-align:right;
         height:80px;
+
+        padding-right:5px;
         }
 
         .noms {
-        display: inline;
-        padding-top:8px;
+        padding-top:5px;
+        padding-left:6px;
+        white-space:nowrap;
+        overflow:hidden;
+        }
 
-        float:left;
-        text-align:left;
-        padding-left:5px;
-        white-space: nowrap;
-        overflow: hidden;
+        .nom1 {
+        padding-left:2px;
+        font-size:110%;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        overflow:hidden;
+        }
+
+        .nom2 {
+        margin-top:-2px;
+        font-size:155%;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        overflow:hidden;
+        }
+
+        .nomLatin {
+        font-family: 'GaramondItalic';
+        }
+
+        .nomVernaculaire {
+        font-family: 'Titre';
+        }
+
+        .wrapper {
+        display:table;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        min-height:28px;
+        border-spacing: 2px;
+        table-layout: fixed;
+        }
+
+        .autres-infos {
+        font-size:100%;
+        display:table-cell;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        padding-left:3px;
+        padding-top:5px;
+        overflow:hidden;
+        }
+
+        .countainer {
+        display:table-cell;
+        position:relative;
+        width:60px;
         }
 
         .pictogrammes {
-        padding-top:12px;
-        float:right;
-        display:inline;
-        height:60px;
-        width:30px;
+        position:absolute;
+        }
+
+        .pictogramme {
+        width:25px;
+        height:25px;
         }
 
 

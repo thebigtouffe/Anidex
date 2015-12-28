@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/bouton2"
                             android:background="@drawable/selector"
-                            android:drawableLeft="@drawable/ic_weight"
+                            android:drawableLeft="@drawable/ic_weight_kilogram_white_24dp"
                             android:onClick="showPoids"
                             android:text="  Poids adulte"
                             android:gravity="left|center_vertical"

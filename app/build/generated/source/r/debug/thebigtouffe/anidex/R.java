@@ -1548,8 +1548,9 @@ containing a value of this type.
         public static final int ic_sort_white_24dp=0x7f02004d;
         public static final int ic_timelapse_white_24dp=0x7f02004e;
         public static final int ic_weight=0x7f02004f;
-        public static final int navigation_drawer_shadow=0x7f020050;
-        public static final int selector=0x7f020051;
+        public static final int ic_weight_kilogram_white_24dp=0x7f020050;
+        public static final int navigation_drawer_shadow=0x7f020051;
+        public static final int selector=0x7f020052;
     }
     public static final class id {
         public static final int action_bar=0x7f0c0040;
