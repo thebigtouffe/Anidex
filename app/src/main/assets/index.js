@@ -141,18 +141,21 @@ function showAZ() {
     var str = "";
     while (i < data.length) {
 
-        if (data[i].taille > 100) {
-            taille = (Math.ceil(data[i].taille/10) / 10).toString().replace(".", ",") + ' m';
+        if (data[i].taille > 1000) {
+            taille = (Math.floor(data[i].taille/10) / 100).toString().replace(".", ",") + ' m |';
+        }
+        else if (data[i].taille > 100) {
+            taille = (Math.floor(data[i].taille)/10).toString().replace(".", ",") + ' cm |';
         }
         else {
-            taille = (Math.ceil(data[i].taille)).toString().replace(".", ",") + ' cm';
+            taille = (Math.floor(data[i].taille)).toString().replace(".", ",") + ' mm |';
         }
 
         if (data[i].poids > 1000) {
-            poids = (Math.ceil(data[i].poids/10) / 100).toString().replace(".", ",") + ' kg';
+            poids = (Math.floor(data[i].poids/10) / 100).toString().replace(".", ",") + ' kg';
         }
         else {
-            poids = (Math.ceil(data[i].poids)).toString().replace(".", ",") + ' g';
+            poids = ((data[i].poids)).toString().replace(".", ",") + ' g';
         }
 
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
@@ -332,19 +335,35 @@ function showPoids() {
 	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
 
-	var i = 0;
+    var i = 0;
+    var taille;
+    var poids;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + data[i].poids + "</div>";
-   		i++;
-	}
-	document.getElementById("listeAnimaux").innerHTML = str;
+
+        if (data[i].poids > 1000) {
+            poids = (Math.floor(data[i].poids/10) / 100).toString().replace(".", ",") + ' kg';
+        }
+        else {
+            poids = ((data[i].poids)).toString().replace(".", ",") + ' g';
+        }
+
+        str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
+        str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+        str = str + '<div class="wrapper"><div class="autres-infos">' + ' Poids : ' + poids + '</div>';
+        str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
+        str = str + "</div></div></div></div></div></div>";
+
+        i++;
+    }
+    document.getElementById("listeAnimaux").innerHTML = str;
+
 
 	updateFavori();
 	updateParametres();
+	updateSeen();
 
 	window.scrollTo(0,previousPositions.poids)
-
 }
 
 function showTaille() {
@@ -358,19 +377,38 @@ function showTaille() {
 	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
 
-	var i = 0;
+    var i = 0;
+    var taille;
+    var poids;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + data[i].taille + "</div>";
+
+        if (data[i].taille > 1000) {
+            taille = (Math.floor(data[i].taille/10) / 100).toString().replace(".", ",") + ' m';
+        }
+        else if (data[i].taille > 100) {
+            taille = (Math.floor(data[i].taille)/10).toString().replace(".", ",") + ' cm';
+        }
+        else {
+            taille = (Math.floor(data[i].taille)).toString().replace(".", ",") + ' mm';
+        }
+
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + '</div>';
+   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
+   		str = str + "</div></div></div></div></div></div>";
+
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
 
+
 	updateFavori();
 	updateParametres();
+	updateSeen();
 
 	window.scrollTo(0,previousPositions.taille)
-
 }
 
 function showEsperance() {
@@ -384,19 +422,42 @@ function showEsperance() {
 	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
 
-	var i = 0;
+    var i = 0;
+    var esperance;
     var str = "";
     while (i < data.length) {
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id.toString() + ')" id="' + data[i].id.toString() + '">' + data[i].nom + '<img class="favorite" id="line' + data[i].id.toString() + '" src = "not_favorite.png"/>' + data[i].esperance + "</div>";
+
+        if (data[i].esperance > 730) {
+            esperance = (Math.floor(data[i].esperance/365)).toString() + ' ans';
+        }
+        else if (data[i].esperance > 365) {
+            esperance = (Math.floor(data[i].esperance/365)).toString() + ' an';
+        }
+
+        else if (data[i].esperance > 30){
+            esperance = (Math.floor(data[i].esperance/30)).toString() + ' mois';
+        }
+
+        else {
+            esperance = Math.floor(data[i].esperance).toString() + ' jours';
+        }
+
+   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Esperance : ' + esperance + '</div>';
+   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
+   		str = str + "</div></div></div></div></div></div>";
+
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
 
+
 	updateFavori();
 	updateParametres();
+	updateSeen();
 
 	window.scrollTo(0,previousPositions.esperance)
-
 }
 
 function showBiome() {
@@ -412,5 +473,5 @@ function showBiome() {
 
 	updateFavori();
 	updateParametres();
-
+	updateSeen();
 }

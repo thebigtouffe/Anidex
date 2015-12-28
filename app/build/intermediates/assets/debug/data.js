@@ -5,7 +5,7 @@ data = [
 "latin":"Lorem Ipsum",
 "poids":30,
 "taille":150,
-"esperance":18
+"esperance":800
 
 },{
 
@@ -13,8 +13,8 @@ data = [
 "nom":"Awiqsh tbb",
 "latin":"Lorem Ipsum",
 "poids":2000,
-"taille":15,
-"esperance":18
+"taille":1500,
+"esperance":400
 
 },{
 
@@ -22,8 +22,8 @@ data = [
 "nom":"Zawiqsh taa",
 "latin":"Lorem Ipsum",
 "poids":20,
-"taille":150,
-"esperance":18
+"taille":15,
+"esperance":300
 
 },{
 
@@ -32,7 +32,7 @@ data = [
 "latin":"Lorem Ipsum",
 "poids":20,
 "taille":150,
-"esperance":18
+"esperance":32
 
 },{
 
