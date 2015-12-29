@@ -78,7 +78,7 @@ public class Fiche extends Activity {
 
                 output.append(", " + id);
                 output.close();
-                Toast.makeText(mContext, "Favori ajouté", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Ajouté à la liste des favoris", Toast.LENGTH_SHORT).show();
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -94,7 +94,7 @@ public class Fiche extends Activity {
 
                 output.append(", " + id);
                 output.close();
-                Toast.makeText(mContext, "Aperçu ajouté", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Ajouté à la liste des aperçus", Toast.LENGTH_SHORT).show();
             }
             catch (IOException e) {
                 e.printStackTrace();

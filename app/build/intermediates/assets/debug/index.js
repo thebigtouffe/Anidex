@@ -159,7 +159,7 @@ function showAZ() {
         }
 
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
    		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + ' Poids : ' + poids + '</div>';
    		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
    		str = str + "</div></div></div></div></div></div>";
@@ -349,7 +349,7 @@ function showPoids() {
         }
 
         str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-        str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
         str = str + '<div class="wrapper"><div class="autres-infos">' + ' Poids : ' + poids + '</div>';
         str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
         str = str + "</div></div></div></div></div></div>";
@@ -394,7 +394,7 @@ function showTaille() {
         }
 
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
    		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + '</div>';
    		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
    		str = str + "</div></div></div></div></div></div>";
@@ -443,8 +443,8 @@ function showEsperance() {
         }
 
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomLatin'> " + data[i].latin + "</div><div class='nom2 nomVernaculaire'>" + data[i].nom + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Esperance : ' + esperance + '</div>';
+   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Espérance : ' + esperance + '</div>';
    		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
    		str = str + "</div></div></div></div></div></div>";
 
