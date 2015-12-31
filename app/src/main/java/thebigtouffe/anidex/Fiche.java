@@ -10,11 +10,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Fiche extends Activity {
@@ -100,6 +104,112 @@ public class Fiche extends Activity {
                 e.printStackTrace();
             }
         }
+
+        public String getFavori() {
+            // lit le fichier des favori puis transfère les données vers la page HTML
+            File favori = new File(getExternalFilesDir(null), "favori.txt");
+            String favori_js = "";
+            try {
+                FileReader fileReader = new FileReader(favori);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+                bufferedReader.close();
+
+                String[] favori_liste;
+                favori_liste = lines.toArray(new String[lines.size()]);
+
+
+                int i = 0;
+                while (i<favori_liste.length-1) {
+                    favori_js = favori_js + favori_liste[i];
+                    i=i+1;
+                }
+                favori_js= favori_js + favori_liste[i];
+
+
+                //WebViewMain.loadUrl(favori_js);
+                Log.w("Favori", favori_js);
+
+            }
+            catch (IOException e) {
+                // Impossible de lire le fichier
+                Log.w("ExternalStorage", "Error reading " + favori, e);
+            }
+            return favori_js;
+        }
+
+        public String getSeen() {
+            // lit le fichier des aperçus puis transfère les données vers la page HTML
+            File seen = new File(getExternalFilesDir(null), "seen.txt");
+            String seen_js = "";
+            try {
+                FileReader fileReader = new FileReader(seen);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+                bufferedReader.close();
+
+                String[] seen_liste;
+                seen_liste = lines.toArray(new String[lines.size()]);
+
+
+                int i = 0;
+                while (i<seen_liste.length-1) {
+                    seen_js = seen_js + seen_liste[i];
+                    i=i+1;
+                }
+                seen_js = seen_js + seen_liste[i];
+
+
+                //WebViewMain.loadUrl(seen_js);
+                Log.w("Seen", seen_js);
+
+            }
+            catch (IOException e) {
+                // Impossible de lire le fichier
+                Log.w("ExternalStorage", "Error reading " + seen, e);
+            }
+            return seen_js;
+        }
+
+        public String getParametres() {
+            // lit le fichier des paramètres puis transfère les données vers la page HTML
+            File settings = new File(getExternalFilesDir(null), "settings.txt");
+            String settings_js = "";
+
+            try {
+                FileReader fileReader = new FileReader(settings);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+                bufferedReader.close();
+
+                String[] settings_liste;
+                settings_liste = lines.toArray(new String[lines.size()]);
+
+                settings_js = settings_liste[0] + settings_liste[1];
+                Log.w("Settings", settings_js);
+
+            }
+            catch (IOException e) {
+                // Unable to create file, likely because external storage is
+                // not currently mounted.
+                Log.w("ExternalStorage", "Error reading " + settings, e);
+            }
+            return settings_js;
+        }
+
+
     }
 
 }

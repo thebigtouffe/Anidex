@@ -1,6 +1,7 @@
 var oldQueryLength;
 var previousPositions = {"seen":0, "favori":0, "az":0, "poids":0, "taille":0, "esperance":0};
 var vue;
+var listeDiv_original = [];
 
 String.prototype.sansAccent = function() {
     var accent = [
@@ -123,32 +124,24 @@ function updateParametres() {
 	param = Android.getParametres();
 }
 
-function showAZ() {
-	rememberPositions();
-    vue = "az";
+function showData() {
 
-    // trie les données dans l'ordre alphabétique
-    data.sort(triAZ);
-
-    document.getElementById("search-wrapper").style.display = "block";
-	document.getElementById("champRecherche").value = "";
-	oldQueryLength = 0;
-	document.getElementById("champRecherche").blur();
-
-    var i = 0;
     var taille;
     var poids;
+    var esperance;
+
+    var i = 0;
     var str = "";
     while (i < data.length) {
 
         if (data[i].taille > 1000) {
-            taille = (Math.floor(data[i].taille/10) / 100).toString().replace(".", ",") + ' m |';
+            taille = (Math.floor(data[i].taille/10) / 100).toString().replace(".", ",") + ' m';
         }
         else if (data[i].taille > 100) {
-            taille = (Math.floor(data[i].taille)/10).toString().replace(".", ",") + ' cm |';
+            taille = (Math.floor(data[i].taille)/10).toString().replace(".", ",") + ' cm';
         }
         else {
-            taille = (Math.floor(data[i].taille)).toString().replace(".", ",") + ' mm |';
+            taille = (Math.floor(data[i].taille)).toString().replace(".", ",") + ' mm';
         }
 
         if (data[i].poids > 1000) {
@@ -158,15 +151,60 @@ function showAZ() {
             poids = ((data[i].poids)).toString().replace(".", ",") + ' g';
         }
 
+        if (data[i].esperance > 730) {
+            esperance = (Math.floor(data[i].esperance/365)).toString() + ' ans';
+        }
+        else if (data[i].esperance > 365) {
+            esperance = (Math.floor(data[i].esperance/365)).toString() + ' an';
+        }
+
+        else if (data[i].esperance > 30){
+            esperance = (Math.floor(data[i].esperance/30)).toString() + ' mois';
+        }
+
+        else {
+            esperance = Math.floor(data[i].esperance).toString() + ' jours';
+        }
+
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
    		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + ' Poids : ' + poids + '</div>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + ' | Poids : ' + poids + ' | Espérance : ' + esperance + '</div>';
    		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
    		str = str + "</div></div></div></div></div></div>";
 
    		i++;
 	}
 	document.getElementById("listeAnimaux").innerHTML = str;
+
+	var listeDiv = document.getElementById("listeAnimaux").children;
+    for (var i = 0; i<data.length;i++) {
+        listeDiv_original.push(listeDiv[i]);
+    }
+}
+
+function showAZ() {
+	rememberPositions();
+    vue = "az";
+
+    data.sort(triAZ);
+    var id = [];
+    for (var i = 0; i < data.length; i++) {
+        numero = data[i].id;
+        id.push(numero - 1);
+        document.getElementById(numero.toString()).style.display = "block";
+    }
+
+    console.log(id);
+
+    document.getElementById("search-wrapper").style.display = "block";
+	document.getElementById("champRecherche").value = "";
+	oldQueryLength = 0;
+	document.getElementById("champRecherche").blur();
+
+    document.getElementById("listeAnimaux").innerHTML = "";
+    for (var i = 0; i<data.length;i++) {
+        document.getElementById("listeAnimaux").appendChild(listeDiv_original[id[i]]);
+    }
 
 	updateFavori();
 	updateParametres();
@@ -254,8 +292,10 @@ function rechercher() {
 
 function init() {
 	oldQueryLength = 0;
-    vue = "az";
 
+    showData();
+
+    vue = "az";
 	showAZ(); // Par défaut on affiche par ordre alphabétique
 	setInterval(rechercher, 100);
 }
@@ -330,34 +370,24 @@ function showPoids() {
 
     data.sort(triPoids);
 
+    var id = [];
+    for (var i = 0; i < data.length; i++) {
+        numero = data[i].id;
+        id.push(numero - 1);
+        document.getElementById(numero.toString()).style.display = "block";
+    }
+
+    console.log(id);
+
     document.getElementById("search-wrapper").style.display = "block";
 	document.getElementById("champRecherche").value = "";
 	oldQueryLength = 0;
 	document.getElementById("champRecherche").blur();
 
-    var i = 0;
-    var taille;
-    var poids;
-    var str = "";
-    while (i < data.length) {
-
-        if (data[i].poids > 1000) {
-            poids = (Math.floor(data[i].poids/10) / 100).toString().replace(".", ",") + ' kg';
-        }
-        else {
-            poids = ((data[i].poids)).toString().replace(".", ",") + ' g';
-        }
-
-        str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
-        str = str + '<div class="wrapper"><div class="autres-infos">' + ' Poids : ' + poids + '</div>';
-        str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
-        str = str + "</div></div></div></div></div></div>";
-
-        i++;
+    document.getElementById("listeAnimaux").innerHTML = "";
+    for (var i = 0; i<data.length;i++) {
+        document.getElementById("listeAnimaux").appendChild(listeDiv_original[id[i]]);
     }
-    document.getElementById("listeAnimaux").innerHTML = str;
-
 
 	updateFavori();
 	updateParametres();
@@ -371,37 +401,24 @@ function showTaille() {
     vue = "taille";
 
     data.sort(triTaille);
+    var id = [];
+    for (var i = 0; i < data.length; i++) {
+        numero = data[i].id;
+        id.push(numero - 1);
+        document.getElementById(numero.toString()).style.display = "block";
+    }
+
+    console.log(id);
 
     document.getElementById("search-wrapper").style.display = "block";
-	document.getElementById("champRecherche").value = "";
-	oldQueryLength = 0;
-	document.getElementById("champRecherche").blur();
+    document.getElementById("champRecherche").value = "";
+    oldQueryLength = 0;
+    document.getElementById("champRecherche").blur();
 
-    var i = 0;
-    var taille;
-    var poids;
-    var str = "";
-    while (i < data.length) {
-
-        if (data[i].taille > 1000) {
-            taille = (Math.floor(data[i].taille/10) / 100).toString().replace(".", ",") + ' m';
-        }
-        else if (data[i].taille > 100) {
-            taille = (Math.floor(data[i].taille)/10).toString().replace(".", ",") + ' cm';
-        }
-        else {
-            taille = (Math.floor(data[i].taille)).toString().replace(".", ",") + ' mm';
-        }
-
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + '</div>';
-   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
-   		str = str + "</div></div></div></div></div></div>";
-
-   		i++;
-	}
-	document.getElementById("listeAnimaux").innerHTML = str;
+    document.getElementById("listeAnimaux").innerHTML = "";
+    for (var i = 0; i<data.length;i++) {
+        document.getElementById("listeAnimaux").appendChild(listeDiv_original[id[i]]);
+    }
 
 
 	updateFavori();
@@ -416,41 +433,24 @@ function showEsperance() {
     vue = "esperance";
 
     data.sort(triEsperance);
+    var id = [];
+    for (var i = 0; i < data.length; i++) {
+        numero = data[i].id;
+        id.push(numero - 1);
+        document.getElementById(numero.toString()).style.display = "block";
+    }
+
+    console.log(id);
 
     document.getElementById("search-wrapper").style.display = "block";
-	document.getElementById("champRecherche").value = "";
-	oldQueryLength = 0;
-	document.getElementById("champRecherche").blur();
+    document.getElementById("champRecherche").value = "";
+    oldQueryLength = 0;
+    document.getElementById("champRecherche").blur();
 
-    var i = 0;
-    var esperance;
-    var str = "";
-    while (i < data.length) {
-
-        if (data[i].esperance > 730) {
-            esperance = (Math.floor(data[i].esperance/365)).toString() + ' ans';
-        }
-        else if (data[i].esperance > 365) {
-            esperance = (Math.floor(data[i].esperance/365)).toString() + ' an';
-        }
-
-        else if (data[i].esperance > 30){
-            esperance = (Math.floor(data[i].esperance/30)).toString() + ' mois';
-        }
-
-        else {
-            esperance = Math.floor(data[i].esperance).toString() + ' jours';
-        }
-
-   		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
-   		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Espérance : ' + esperance + '</div>';
-   		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
-   		str = str + "</div></div></div></div></div></div>";
-
-   		i++;
-	}
-	document.getElementById("listeAnimaux").innerHTML = str;
+    document.getElementById("listeAnimaux").innerHTML = "";
+    for (var i = 0; i<data.length;i++) {
+        document.getElementById("listeAnimaux").appendChild(listeDiv_original[id[i]]);
+    }
 
 
 	updateFavori();

@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
-    WebView WebViewMain;
+    public static WebView WebViewMain;
 
     private String vue;
 

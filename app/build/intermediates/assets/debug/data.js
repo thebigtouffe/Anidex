@@ -3,7 +3,7 @@ data = [
 "id":1,
 "nom":"Bornithorhynchus anatinus",
 "latin":"Lorem Ipsum",
-"poids":30,
+"poids":300000,
 "taille":150,
 "esperance":800
 
@@ -37,9 +37,9 @@ data = [
 },{
 
 'id':5,
-'nom':'Zawiqsh',
+'nom':'Bababa',
 "latin":"Lorem Ipsum",
-"poids":30,
+"poids":30000,
 "taille":150,
 "esperance":18
 },{
@@ -63,7 +63,7 @@ data = [
 'id':8,
 'nom':'Zawiqsh',
 "latin":"Lorem Ipsum",
-"poids":30,
+"poids":450000,
 "taille":150,
 "esperance":18
 },{
