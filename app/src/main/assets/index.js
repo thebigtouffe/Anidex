@@ -144,6 +144,7 @@ function showData() {
             taille = (Math.floor(data[i].taille)).toString().replace(".", ",") + ' mm';
         }
 
+
         if (data[i].poids > 1000) {
             poids = (Math.floor(data[i].poids/10) / 100).toString().replace(".", ",") + ' kg';
         }
@@ -151,24 +152,23 @@ function showData() {
             poids = ((data[i].poids)).toString().replace(".", ",") + ' g';
         }
 
+
         if (data[i].esperance > 730) {
             esperance = (Math.floor(data[i].esperance/365)).toString() + ' ans';
         }
         else if (data[i].esperance > 365) {
             esperance = (Math.floor(data[i].esperance/365)).toString() + ' an';
         }
-
         else if (data[i].esperance > 30){
             esperance = (Math.floor(data[i].esperance/30)).toString() + ' mois';
         }
-
         else {
             esperance = Math.floor(data[i].esperance).toString() + ' jours';
         }
 
    		str = str + '<div class="liste" onclick="afficherFiche(' + data[i].id + ')" id="' + data[i].id + '">' + "<div class='thumb'> <img class ='imgthumb' src='images/" + data[i].id + ".jpg' /></div>";
    		str = str + "<div class='infos'><div class='noms'><div class='nom1 nomVernaculaire'> " + data[i].nom + "</div><div class='nom2 nomLatin'>" + data[i].latin + '</div></div>';
-   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + ' | Poids : ' + poids + ' | Espérance : ' + esperance + '</div>';
+   		str = str + '<div class="wrapper"><div class="autres-infos">'+ 'Taille : ' + taille + ' | Poids : ' + poids + '<br> Espérance de vie : ' + esperance + '</div>';
    		str = str + '<div class="countainer"><div class="pictogrammes"><img class="pictogramme" id="seen' + data[i].id + '" src = "not_seen.png"/>  <img class="pictogramme" id="fav'+ data[i].id + '" src = "not_favorite.png"/>';
    		str = str + "</div></div></div></div></div></div>";
 
@@ -194,7 +194,6 @@ function showAZ() {
         document.getElementById(numero.toString()).style.display = "block";
     }
 
-    console.log(id);
 
     document.getElementById("search-wrapper").style.display = "block";
 	document.getElementById("champRecherche").value = "";
@@ -311,7 +310,7 @@ function showFavori() {
 
 	if (favori.length == 1) {
 	    document.getElementById("search-wrapper").style.display = "none";
-	    document.getElementById("listeAnimaux").innerHTML = "<div class='noFavori'> Vous n'avez pas enregistré de favori.</div>";
+	    //document.getElementById("listeAnimaux").innerHTML = "<div class='noFavori'> Vous n'avez pas enregistré de favori.</div>";
 	}
 
 	else {
@@ -343,7 +342,7 @@ function showSeen() {
 
 	if (seen.length == 1) {
 	    document.getElementById("search-wrapper").style.display = "none";
-	    document.getElementById("listeAnimaux").innerHTML = "<div class='noFavori'> Vous n'avez pas encore d'aperçus.</div>";
+	    //document.getElementById("listeAnimaux").innerHTML = "<div class='noFavori'> Vous n'avez pas encore d'aperçus.</div>";
 	}
 
 	else {
@@ -377,8 +376,6 @@ function showPoids() {
         document.getElementById(numero.toString()).style.display = "block";
     }
 
-    console.log(id);
-
     document.getElementById("search-wrapper").style.display = "block";
 	document.getElementById("champRecherche").value = "";
 	oldQueryLength = 0;
@@ -407,8 +404,6 @@ function showTaille() {
         id.push(numero - 1);
         document.getElementById(numero.toString()).style.display = "block";
     }
-
-    console.log(id);
 
     document.getElementById("search-wrapper").style.display = "block";
     document.getElementById("champRecherche").value = "";
@@ -439,8 +434,6 @@ function showEsperance() {
         id.push(numero - 1);
         document.getElementById(numero.toString()).style.display = "block";
     }
-
-    console.log(id);
 
     document.getElementById("search-wrapper").style.display = "block";
     document.getElementById("champRecherche").value = "";

@@ -12,4 +12,6 @@
     <color name="backgroundButton_pressed">#28731F</color>
     <color name="backgroundButton_in">#53B565</color>
 
+    <color name="shadow">#F6F6F8</color>
+
 </resources>

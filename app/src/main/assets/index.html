@@ -12,6 +12,11 @@
 		}
 
         @font-face {
+        font-family: Roboto;
+        src: url("fonts/Roboto-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
         font-family: Titre;
         src: url("titre.ttf") format("truetype");
         }
@@ -20,7 +25,8 @@
 			-webkit-user-select: none;
 			margin: 0;
 			padding: 0;
-            background-image:url('background_liste.png');
+            font-family:'Roboto';
+            background:rgb(223,223,223);
         }
 
 		* {
@@ -80,41 +86,40 @@
         }
 
         .liste {
-        height:77px;
+        height:90px;
 
-        margin-left:10px;
-        margin-right:10px;
-        margin-top:10px;
+        margin-left:0px;
+        margin-right:0px;
+        margin-top:0px;
 
         padding-left:7px;
         padding-top:7px;
 
-        background: -webkit-linear-gradient(top,  rgba(247,245,241, 1), rgba(240,236,233, 1) );
+        background: rgb(254,254,254);
 
-        border-style: solid none none none;
+        border-style: solid none solid none;
         border-width:1px;
-        border-color: rgba(250,250,250, 0.3);
-        border-radius: 4px;
+        border-top-color: rgb(220,220,220);
+        border-bottom-color: rgb(247,247,247);
 
-        box-shadow: 0px 0px 2px 0px rgba(40, 40, 40, 0.8);
         }
 
         .thumb {
         max-width:100%;
-        height:80px;
+        height:84px;
         display:block;
         float:left;
         }
 
         .imgthumb {
-        height:70px;
-        border-radius: 3px;
+        height:84px;
+        border-radius: 0px;
         }
 
         .infos {
         position: relative;
         overflow: hidden;
-        height:77px;
+        height:90px;
         padding-right:5px;
 
         }
@@ -139,7 +144,7 @@
         text-overflow: ellipsis;
         white-space:nowrap;
         overflow:hidden;
-        color:#5B554E;
+        color:rgb(40,40,40);
         padding-top:2px;
         }
 
@@ -156,14 +161,15 @@
         width: 100%;
         position: absolute;
         bottom: 6px;
-        min-height:28px;
+        min-height:45px;
         border-spacing: 2px;
         table-layout: fixed;
         }
 
         .autres-infos {
         font-size:80%;
-        color:#5B554E;
+        line-height: 140%;
+        color:rgb(40,40,40);
 
         display:table-cell;
 

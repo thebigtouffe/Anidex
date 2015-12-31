@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -36,7 +35,7 @@ public class MainActivity extends Activity {
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
-    public static WebView WebViewMain;
+    WebView WebViewMain;
 
     private String vue;
 
@@ -85,7 +84,7 @@ public class MainActivity extends Activity {
 
         // initialise la WebViewMain avec le pont Java <> JS
         WebViewMain = (WebView) findViewById(R.id.webview_main);
-        WebViewMain.setWebChromeClient(new WebChromeClient());
+        //WebViewMain.setWebChromeClient(new WebChromeClient());
         WebViewMain.getSettings().setJavaScriptEnabled(true);
         WebViewMain.addJavascriptInterface(new JSInterfaceMain(this), "Android");
         WebViewMain.setInitialScale(1);
@@ -100,7 +99,7 @@ public class MainActivity extends Activity {
 
         // crée le fichier des favori si inexistant
         File favori = new File(getExternalFilesDir(null), "favori.txt");
-        if(!favori.exists()) {
+        if (!favori.exists()) {
             try {
                 InputStream is = getAssets().open("favori.txt");
                 OutputStream os = new FileOutputStream(favori);
@@ -116,7 +115,7 @@ public class MainActivity extends Activity {
 
         // crée le fichier des aperçus si inexistant
         File seen = new File(getExternalFilesDir(null), "seen.txt");
-        if(!seen.exists()) {
+        if (!seen.exists()) {
             try {
                 InputStream is = getAssets().open("seen.txt");
                 OutputStream os = new FileOutputStream(seen);
@@ -132,7 +131,7 @@ public class MainActivity extends Activity {
 
         // crée le fichier des paramètres si inexistant
         File settings = new File(getExternalFilesDir(null), "settings.txt");
-        if(!settings.exists()) {
+        if (!settings.exists()) {
             try {
                 InputStream is = getAssets().open("settings.txt");
                 OutputStream os = new FileOutputStream(settings);

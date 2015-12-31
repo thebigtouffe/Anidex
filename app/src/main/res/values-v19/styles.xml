@@ -16,6 +16,7 @@
         <item name="android:background">@color/apptheme_primary</item>
         <item name="android:icon">@drawable/actionbar_icon_placeholder_compat</item>
         <item name="android:titleTextStyle">@style/AppTheme_ActionBar_Title</item>
+
     </style>
 
     <style name="AppTheme_ActionBar_Title" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
