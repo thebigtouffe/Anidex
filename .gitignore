@@ -72,7 +72,7 @@ tests/report/
 
 # macOS
 .DS_Store
-._.DS_Store
+._*
 .AppleDouble
 .LSOverride
 .DocumentRevisions-V100
